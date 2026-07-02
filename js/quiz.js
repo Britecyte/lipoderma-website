@@ -15,7 +15,7 @@ const STEPS = [
         id: "timeline",
         eyebrow: "Step 2 of 2",
         title: "When would you like to connect with a provider?",
-        subtitle: "No commitment yet — this just helps us understand timing.",
+        subtitle: "No commitment yet—this just helps us understand timing.",
         options: [
             "As soon as possible",
             "In the next few weeks",
@@ -27,7 +27,7 @@ const STEPS = [
 const COMPLETE = {
     title: "Great. Here are your next steps.",
     subtitle: "Taking you to trained providers near you.",
-    eyebrow: "All set",
+    eyebrow: "ALL SET",
     selectionsSaved: "Selections saved",
     viewProviders: "View providers now",
     completeEyebrow: "Complete",
@@ -52,14 +52,14 @@ function renderMinimal(container, answers, stepIndex, onDone) {
     if (isDone) {
         container.innerHTML = `
             <div class="quiz-flow-minimal quiz-embed-stage quiz-complete-panel flex h-full min-h-0 flex-col">
-                <div class="quiz-complete-copy flex flex-col items-center justify-center text-center">
-                    <p class="microtype">${COMPLETE.eyebrow}</p>
-                    <p class="text-sm leading-relaxed text-ink-soft">${COMPLETE.subtitle}</p>
-                    <a href="#providers"
-                       class="quiz-complete-cta group text-sm font-semibold text-ink transition-colors hover:text-flame active:text-flame">
+                <a href="#providers"
+                   class="quiz-complete-cta group flex h-full w-full min-h-0 flex-1 flex-col items-center justify-center px-4 text-center">
+                    <span class="quiz-complete-eyebrow">${COMPLETE.eyebrow}</span>
+                    <span class="quiz-complete-subtitle">${COMPLETE.subtitle}</span>
+                    <span class="quiz-complete-label transition-colors group-hover:text-flame group-active:text-flame">
                         ${COMPLETE.viewProviders}<span aria-hidden="true"> →</span>
-                    </a>
-                </div>
+                    </span>
+                </a>
             </div>`;
 
         setTimeout(() => {
@@ -82,7 +82,7 @@ function renderMinimal(container, answers, stepIndex, onDone) {
         .join('');
 
     container.innerHTML = `
-        <div class="quiz-flow-minimal quiz-embed-stage flex h-full min-h-0 flex-col">
+        <div class="quiz-flow-minimal quiz-embed-stage quiz-step-${step.id} flex h-full min-h-0 flex-col">
             <div class="quiz-embed-question shrink-0">
                 <h2 class="font-display text-lg leading-snug text-ink">${step.title}</h2>
             </div>

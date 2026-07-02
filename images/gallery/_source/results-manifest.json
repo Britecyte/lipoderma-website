@@ -1,0 +1,66 @@
+[
+  {
+    "slug": "case-01-jawline-beccio",
+    "area": "jawline",
+    "provider": "Michelle Beccio, FNP-BC",
+    "before": "images/gallery/case-01-jawline-beccio-before.jpg",
+    "after": "images/gallery/case-01-jawline-beccio-after.jpg",
+    "source": "lipoderma.com/visible-results \u2014 1-1.jpg / 2-1.jpg"
+  },
+  {
+    "slug": "case-02-temples-woodby",
+    "area": "temples",
+    "provider": "Carrie Woodby, NP",
+    "before": "images/gallery/case-02-temples-woodby-before.jpg",
+    "after": "images/gallery/case-02-temples-woodby-after.jpg",
+    "source": "lipoderma.com/visible-results \u2014 7-1.jpg / 8-1.jpg"
+  },
+  {
+    "slug": "case-03-midface-fearmonti",
+    "area": "midface",
+    "provider": "Dr. Regina Fearmonti",
+    "before": "images/gallery/case-03-midface-fearmonti-before.jpg",
+    "after": "images/gallery/case-03-midface-fearmonti-after.jpg",
+    "source": "lipoderma.com/visible-results \u2014 Beige border 12 / 13"
+  },
+  {
+    "slug": "case-04-cheek-beccio",
+    "area": "midface",
+    "provider": "Michelle Beccio, FNP-BC",
+    "before": "images/gallery/case-04-cheek-beccio-before.jpg",
+    "after": "images/gallery/case-04-cheek-beccio-after.jpg",
+    "source": "lipoderma.com/visible-results \u2014 3-1.jpg / 4-1.jpg"
+  },
+  {
+    "slug": "case-05-jawline-fearmonti-male",
+    "area": "jawline",
+    "provider": "Dr. Regina Fearmonti",
+    "before": "images/gallery/case-05-jawline-fearmonti-male-before.jpg",
+    "after": "images/gallery/case-05-jawline-fearmonti-male-after.jpg",
+    "source": "lipoderma.com/visible-results \u2014 Beige border 14 / 15"
+  },
+  {
+    "slug": "case-06-hands-woodby",
+    "area": "hands",
+    "provider": "Carrie Woodby, NP",
+    "before": "images/gallery/case-06-hands-woodby-before.jpg",
+    "after": "images/gallery/case-06-hands-woodby-after.jpg",
+    "source": "lipoderma.com/visible-results \u2014 13-1.jpg / 14-1.jpg"
+  },
+  {
+    "slug": "case-07-hands-beccio-ring",
+    "area": "hands",
+    "provider": "Michelle Beccio, FNP-BC",
+    "before": "images/gallery/case-07-hands-beccio-ring-before.jpg",
+    "after": "images/gallery/case-07-hands-beccio-ring-after.jpg",
+    "source": "lipoderma.com/visible-results \u2014 Beige border 11 / 10"
+  },
+  {
+    "slug": "case-11-midface-beccio-front",
+    "area": "midface",
+    "provider": "Michelle Beccio, FNP-BC",
+    "before": "images/gallery/case-11-midface-beccio-front-before.jpg",
+    "after": "images/gallery/case-11-midface-beccio-front-after.jpg",
+    "source": "lipoderma.com clinical library \u2014 5-1.jpg / 6-1.jpg"
+  }
+]

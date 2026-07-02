@@ -1,5 +1,5 @@
 /**
- * Provider directory map — vanilla JS port of MapDirectory.tsx
+ * Provider directory map—vanilla JS port of MapDirectory.tsx
  */
 const LEAFLET_CSS = "https://unpkg.com/leaflet@1.9.4/dist/leaflet.css";
 const LEAFLET_JS  = "https://unpkg.com/leaflet@1.9.4/dist/leaflet.js";

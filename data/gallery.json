@@ -3,13 +3,30 @@
     {
       "id": "midface",
       "label": "Midface",
-      "desc": "Cheek and under-eye volume loss — common after weight reduction.",
+      "desc": "Cheek and under-eye volume loss—common after weight reduction.",
       "quizInterest": "Changes from GLP-1 weight loss",
       "examples": [
-        { "slug": "midface-1", "title": "Volume back where weight loss took it.", "story": "Flatter cheeks and less under-eye support after GLP-1 journey.", "before": "images/gallery/2.jpg", "after": "images/gallery/2-1.jpg" },
-        { "slug": "midface-2", "title": "Soft structure restored.", "story": "Midface hollowing reversed without an overfilled look.", "before": "images/gallery/4.jpg", "after": "images/gallery/4-1.jpg" },
-        { "slug": "midface-3", "title": "Tired look, refreshed.", "story": "Expression matches how the patient feels again.", "before": "images/gallery/13.jpg", "after": "images/gallery/13-1.jpg" },
-        { "slug": "midface-4", "title": "Natural cheek contour.", "story": "Structure back, nothing frozen or puffy.", "before": "images/gallery/14.jpg", "after": "images/gallery/14-1.jpg" }
+        {
+          "slug": "midface-fearmonti",
+          "title": "Volume back where weight loss took it.",
+          "story": "Front-facing midface restoration with natural contour.",
+          "before": "images/gallery/case-03-midface-fearmonti-before.jpg",
+          "after": "images/gallery/case-03-midface-fearmonti-after.jpg"
+        },
+        {
+          "slug": "midface-cheek-beccio",
+          "title": "Soft structure restored.",
+          "story": "Cheek profile hollowing reversed without an overfilled look.",
+          "before": "images/gallery/case-04-cheek-beccio-before.jpg",
+          "after": "images/gallery/case-04-cheek-beccio-after.jpg"
+        },
+        {
+          "slug": "midface-front-beccio",
+          "title": "Tired look, refreshed.",
+          "story": "Expression matches how the patient feels again.",
+          "before": "images/gallery/case-11-midface-beccio-front-before.jpg",
+          "after": "images/gallery/case-11-midface-beccio-front-after.jpg"
+        }
       ]
     },
     {
@@ -18,9 +35,13 @@
       "desc": "Temple hollowing that changes the frame around the eyes.",
       "quizInterest": "Facial volume",
       "examples": [
-        { "slug": "temples-1", "title": "A softer frame, nothing frozen.", "story": "Temple volume restored for a balanced upper face.", "before": "images/gallery/4.jpg", "after": "images/gallery/4-1.jpg" },
-        { "slug": "temples-2", "title": "Less hollow at the brow.", "story": "Subtle framing without changing bone structure.", "before": "images/gallery/2.jpg", "after": "images/gallery/2-1.jpg" },
-        { "slug": "temples-3", "title": "Quiet balance.", "story": "The result reads as rest, not treatment.", "before": "images/gallery/13.jpg", "after": "images/gallery/13-1.jpg" }
+        {
+          "slug": "temples-woodby",
+          "title": "A softer frame, nothing frozen.",
+          "story": "Temple volume restored for a balanced upper face.",
+          "before": "images/gallery/case-02-temples-woodby-before.jpg",
+          "after": "images/gallery/case-02-temples-woodby-after.jpg"
+        }
       ]
     },
     {
@@ -29,9 +50,20 @@
       "desc": "Lost cushion and visible structure in the hands.",
       "quizInterest": "Hands",
       "examples": [
-        { "slug": "hands-1", "title": "Cushion restored, structure softened.", "story": "Veins and tendons less prominent in motion.", "before": "images/gallery/6.jpg", "after": "images/gallery/6-1.jpg" },
-        { "slug": "hands-2", "title": "The cushion she had a decade ago.", "story": "Hands look softer without looking treated.", "before": "images/gallery/Mature-Woman-scaled.webp", "after": "images/gallery/6-1.jpg" },
-        { "slug": "hands-3", "title": "Natural in motion.", "story": "Volume back where time thinned the tissue.", "before": "images/gallery/6.jpg", "after": "images/gallery/6-1.jpg" }
+        {
+          "slug": "hands-woodby",
+          "title": "Cushion restored, structure softened.",
+          "story": "Veins and tendons less prominent in motion.",
+          "before": "images/gallery/case-06-hands-woodby-before.jpg",
+          "after": "images/gallery/case-06-hands-woodby-after.jpg"
+        },
+        {
+          "slug": "hands-beccio-ring",
+          "title": "The cushion she had a decade ago.",
+          "story": "Hands look softer without looking treated.",
+          "before": "images/gallery/case-07-hands-beccio-ring-before.jpg",
+          "after": "images/gallery/case-07-hands-beccio-ring-after.jpg"
+        }
       ]
     },
     {
@@ -40,8 +72,20 @@
       "desc": "Lower-face softness lost to aging or weight change.",
       "quizInterest": "Facial volume",
       "examples": [
-        { "slug": "jawline-1", "title": "Restored, not reshaped.", "story": "Jawline support without changing the face you know.", "before": "images/gallery/14.jpg", "after": "images/gallery/14-1.jpg" },
-        { "slug": "jawline-2", "title": "Familiar from every angle.", "story": "Lower-face volume replaced with restraint.", "before": "images/gallery/13.jpg", "after": "images/gallery/13-1.jpg" }
+        {
+          "slug": "jawline-beccio",
+          "title": "Restored, not reshaped.",
+          "story": "Jawline support without changing the face you know.",
+          "before": "images/gallery/case-01-jawline-beccio-before.jpg",
+          "after": "images/gallery/case-01-jawline-beccio-after.jpg"
+        },
+        {
+          "slug": "jawline-fearmonti-male",
+          "title": "Familiar from every angle.",
+          "story": "Lower-face volume replaced with restraint.",
+          "before": "images/gallery/case-05-jawline-fearmonti-male-before.jpg",
+          "after": "images/gallery/case-05-jawline-fearmonti-male-after.jpg"
+        }
       ]
     }
   ]

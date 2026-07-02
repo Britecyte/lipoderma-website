@@ -58,10 +58,17 @@ function flatList(categories, filter) {
   return list;
 }
 
+function siteBaseUrl() {
+  const pathname = window.location.pathname;
+  if (/\/(gallery|science)(\/|$)/.test(pathname)) {
+    return new URL('../', window.location.href);
+  }
+  return new URL('./', window.location.href);
+}
+
 function galleryImageUrl(relativePath) {
   if (!relativePath) return null;
-  const path = relativePath.startsWith('/') ? relativePath : `/${relativePath}`;
-  return new URL(path, window.location.origin).href;
+  return new URL(relativePath.replace(/^\//, ''), siteBaseUrl()).href;
 }
 
 function photoMarkup(ex, side, className) {
@@ -69,10 +76,10 @@ function photoMarkup(ex, side, className) {
   const src = galleryImageUrl(ex[side]);
 
   if (src) {
-    return `<img class="${className}" src="${src}" alt="${label} — ${ex.slug}" loading="lazy" decoding="async" draggable="false" />`;
+    return `<img class="${className}" src="${src}" alt="${label}—${ex.slug}" loading="lazy" decoding="async" draggable="false" />`;
   }
 
-  return `<span class="results-gallery__placeholder-copy">[ cleared ${side} — ${ex.slug} ]</span>`;
+  return `<span class="results-gallery__placeholder-copy">[ cleared ${side}—${ex.slug} ]</span>`;
 }
 
 function compareMarkup(ex, variant = 'tile') {
@@ -100,7 +107,7 @@ function tileHtml(cat, ex, exIndex) {
       data-cat-index="${cat._index}"
       data-ex-index="${exIndex}">
       <button type="button" class="results-gallery__open"
-        aria-label="View before and after — ${ex.title}">
+        aria-label="View before and after—${ex.title}">
         ${compareMarkup(ex)}
       </button>
       <div class="results-gallery__cap">

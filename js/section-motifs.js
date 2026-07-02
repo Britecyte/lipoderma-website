@@ -14,6 +14,7 @@ export const MOTIF_CONFIG = {
         '#results',
         '#providers .providers-section-motif',
         '.gallery-page-section',
+        '.science-page-section',
         '#about .section-ambient-motif',
         'footer .section-ambient-motif',
     ],
@@ -41,7 +42,7 @@ const AMBIENT_CLASS = 'pointer-events-none absolute z-0 text-flame/[0.18]';
 const AMBIENT_LEFT_CLASS = `${AMBIENT_CLASS} left-6 top-10 h-[min(46vw,19rem)] w-[min(46vw,19rem)]`;
 const AMBIENT_RIGHT_CLASS = `${AMBIENT_CLASS} right-6 bottom-10 h-[min(46vw,19rem)] w-[min(46vw,19rem)]`;
 
-/** Corner marks — about: top-left only; footer: bottom-right only */
+/** Corner marks—about: top-left only; footer: bottom-right only */
 function getSharedAmbientMarkup(hostKey) {
     const left = `
         <svg aria-hidden="true" class="${AMBIENT_LEFT_CLASS}" viewBox="0 0 220 220" fill="none">
