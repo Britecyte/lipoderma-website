@@ -8,17 +8,16 @@ document.addEventListener('DOMContentLoaded', () => {
     // ── Section ambient adipocyte clusters ────────────────────────────────────
     initSectionMotifs();
 
-    // ── Scroll reveal ─────────────────────────────────────────────────────────
-    initScrollReveal();
-
     // ── Quiz ──────────────────────────────────────────────────────────────────
     initQuiz();
 
-    // ── Results gallery ───────────────────────────────────────────────────────
-    initResultsGallery();
-
-    // ── Provider map ─────────────────────────────────────────────────────────
-    initProvidersMap();
+    // ── Async content first, then scroll reveal ───────────────────────────────
+    Promise.all([
+        initResultsGallery(),
+        initProvidersMap(),
+    ]).then(() => {
+        initScrollReveal();
+    });
 
     // ── Mobile menu toggle ────────────────────────────────────────────────────
     const menuToggle = document.querySelector('[data-menu-toggle]');
@@ -49,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (targetElement) {
                 e.preventDefault();
                 targetElement.scrollIntoView({ behavior: 'smooth' });
-                if (mobileNav && !mobileNav.hasAttribute('hidden')) {
+                if (mobileNav?.classList.contains('is-open')) {
                     setMenuExpanded(false);
                 }
             }
@@ -62,10 +61,15 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!btn) return;
         e.preventDefault();
 
+        if (mobileNav?.classList.contains('is-open')) {
+            setMenuExpanded(false);
+        }
+
         const lightbox = document.getElementById('results-gallery-lightbox');
         if (lightbox?.classList.contains('is-open')) {
             lightbox.classList.remove('is-open');
             lightbox.setAttribute('aria-hidden', 'true');
+            document.documentElement.classList.remove('results-gallery-lightbox-open');
         }
 
         const section = document.getElementById('providers');
@@ -74,7 +78,9 @@ document.addEventListener('DOMContentLoaded', () => {
             window.dispatchEvent(new Event('lipoderma:providers-target'));
             return;
         }
-        window.location.href = new URL('../#providers', import.meta.url).href;
+
+        const providersUrl = new URL('../#providers', window.location.href);
+        window.location.href = providersUrl.href;
     });
 
 });
@@ -109,6 +115,18 @@ function tagRevealElements() {
             return;
         }
 
+        if (container.closest('.gallery-page-section')) {
+            // Intro + gallery grid stay visible once JS renders; animate only the CTA block.
+            addReveal(container.querySelector(':scope > .mt-10'), 0);
+            return;
+        }
+
+        if (container.closest('#providers')) {
+            // Keep copy and search visible; reveal only after the directory has rendered.
+            addReveal(container.querySelector('.providers-directory-grid'), 0);
+            return;
+        }
+
         Array.from(container.children).forEach((child, i) => {
             addReveal(child, Math.min(i, 2));
         });
@@ -136,4 +154,14 @@ function initScrollReveal() {
     );
 
     document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+    revealElementsAlreadyInView();
+}
+
+function revealElementsAlreadyInView() {
+    document.querySelectorAll('.reveal:not(.is-visible)').forEach((el) => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight * 0.94 && rect.bottom > 0) {
+            el.classList.add('is-visible');
+        }
+    });
 }

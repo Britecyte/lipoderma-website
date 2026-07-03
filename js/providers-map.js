@@ -95,9 +95,21 @@ function matchesQuery(provider, normalized) {
     .includes(normalized);
 }
 
+function getSortOrigin(state) {
+  if (state.selectedOrigin) return state.selectedOrigin;
+  if (state.userLocation) return state.userLocation;
+  const query = state.query.trim();
+  if (query.length >= 2 && state.locationSuggestions.length > 0) {
+    return state.locationSuggestions[0];
+  }
+  return null;
+}
+
 function getVisibleProviders(allProviders, query, origin) {
   const normalized = query.trim().toLowerCase();
-  const providers = allProviders.filter(p => matchesQuery(p, normalized));
+  const providers = origin
+    ? allProviders
+    : allProviders.filter(p => matchesQuery(p, normalized));
   if (!origin) return providers;
   return [...providers].sort(
     (a, b) => distanceInMiles(origin, a) - distanceInMiles(origin, b)
@@ -105,11 +117,20 @@ function getVisibleProviders(allProviders, query, origin) {
 }
 
 function buildStatusText(state) {
+  const implicitOrigin =
+    !state.selectedOrigin &&
+    !state.userLocation &&
+    state.query.trim().length >= 2 &&
+    state.locationSuggestions[0];
+  const origin = state.selectedOrigin ?? state.userLocation ?? implicitOrigin;
+
   let text = "";
   if (state.selectedOrigin) {
     text = `Sorted by distance from ${state.selectedOrigin.label}.`;
-  } else if (state.locationStatus === "ready") {
+  } else if (state.userLocation) {
     text = "Sorted by distance from your location.";
+  } else if (implicitOrigin) {
+    text = `Showing nearest providers to ${implicitOrigin.label}.`;
   } else if (state.suggestionStatus === "loading") {
     text = "Looking for matching locations.";
   } else if (state.suggestionStatus === "empty" && state.query.trim().length >= 2) {
@@ -170,6 +191,7 @@ export async function initProvidersMap() {
 
   const searchInput  = section.querySelector("#provider-search");
   const geolocateBtn = section.querySelector("#provider-geolocate");
+  const searchBar    = section.querySelector(".providers-search-bar");
   const suggestionsEl = section.querySelector("#location-suggestions");
   const statusEl     = section.querySelector("#provider-status");
   const listEl       = section.querySelector("#provider-list");
@@ -233,6 +255,7 @@ export async function initProvidersMap() {
     if (!state.locationSuggestions.length) {
       suggestionsEl.hidden = true;
       suggestionsEl.innerHTML = "";
+      searchBar?.classList.remove("is-suggesting");
       return;
     }
     const items = state.locationSuggestions
@@ -244,12 +267,13 @@ export async function initProvidersMap() {
         >${escapeHtml(s.label)}</button>
       `).join("");
     suggestionsEl.innerHTML = `
-      <div class="absolute left-0 right-0 top-[calc(100%+0.35rem)] z-20 border hairline bg-white shadow-lift">
+      <div class="border hairline bg-white shadow-lift">
         <p class="microtype border-b hairline px-4 py-2 !text-[9px]">${COPY.locationSuggestionsEyebrow}</p>
         ${items}
       </div>
     `;
     suggestionsEl.hidden = false;
+    searchBar?.classList.add("is-suggesting");
   }
 
   function updateMarkerIcons() {
@@ -260,7 +284,7 @@ export async function initProvidersMap() {
   }
 
   function renderList() {
-    const origin = state.selectedOrigin ?? state.userLocation;
+    const origin = getSortOrigin(state);
     const visible = getVisibleProviders(allProviders, state.query, origin);
     statusEl.textContent = buildStatusText(state);
     geolocateBtn.textContent =
@@ -435,10 +459,11 @@ export async function initProvidersMap() {
 
   const observer = new IntersectionObserver(
     ([entry]) => { if (entry.isIntersecting) activateMapLoad(); },
-    { threshold: 0.15 }
+    { threshold: 0.05, rootMargin: "240px 0px 320px 0px" }
   );
   observer.observe(mapPanel);
   window.addEventListener("lipoderma:providers-target", activateMapLoad);
+  activateMapLoad();
 
   searchInput.addEventListener("input", () => {
     state.query = searchInput.value;

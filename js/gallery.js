@@ -131,7 +131,6 @@ function renderLightboxMedia() {
   if (!current) return;
   
   const side = galleryState.viewSide;
-  const label = side === 'before' ? 'Before' : 'After';
   
   document.getElementById('results-gallery-lightbox-compare').innerHTML = `
     <div class="results-gallery-lightbox__desktop-view">
@@ -139,8 +138,7 @@ function renderLightboxMedia() {
     </div>
     <div class="results-gallery-lightbox__mobile-view">
       <div class="results-gallery-lightbox__mobile-photo">
-        ${photoMarkup(current.ex, side, 'results-gallery__photo')}
-        <span class="results-gallery__half-label">${label}</span>
+        ${photoMarkup(current.ex, side, 'results-gallery__photo results-gallery-lightbox__mobile-image')}
       </div>
     </div>
   `;
