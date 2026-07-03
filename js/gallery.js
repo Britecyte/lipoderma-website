@@ -3,7 +3,6 @@ let galleryState = {
   filter: 'all',
   flatIndex: 0,
   categories: [],
-  viewSide: 'before',
 };
 
 let zoomState = {
@@ -137,13 +136,13 @@ function renderLightboxMedia() {
 function goNext() {
   const flat = flatList(galleryState.categories, galleryState.filter);
   if (galleryState.flatIndex < flat.length - 1) {
-    openLightbox(galleryState.flatIndex + 1, galleryState.viewSide);
+    openLightbox(galleryState.flatIndex + 1);
   }
 }
 
 function goPrev() {
   if (galleryState.flatIndex > 0) {
-    openLightbox(galleryState.flatIndex - 1, galleryState.viewSide);
+    openLightbox(galleryState.flatIndex - 1);
   }
 }
 
@@ -317,9 +316,8 @@ function onLightboxKeydown(e) {
   }
 }
 
-function openLightbox(flatIndex, side = 'before') {
+function openLightbox(flatIndex) {
   galleryState.flatIndex = flatIndex;
-  galleryState.viewSide = side;
   zoomState.isZoomed = false;
   zoomState.panX = 50;
   zoomState.panY = 50;
@@ -347,9 +345,9 @@ function tileFlatIndex(tile) {
   return flat.findIndex((item) => item.catIndex === catIndex && item.exIndex === exIndex);
 }
 
-function openLightboxFromTile(tile, side) {
+function openLightboxFromTile(tile) {
   const flatIndex = tileFlatIndex(tile);
-  if (flatIndex >= 0) openLightbox(flatIndex, side);
+  if (flatIndex >= 0) openLightbox(flatIndex);
 }
 
 function renderGallery(root, categories, filter) {
@@ -428,10 +426,8 @@ export async function initResultsGallery() {
       const open = e.target.closest('.results-gallery__open');
       if (open) {
         const tile = open.closest('.results-gallery__tile');
-        const half = e.target.closest('.results-gallery__half');
-        const side = half ? half.dataset.side : 'before';
         if (!tile) return;
-        openLightboxFromTile(tile, side);
+        openLightboxFromTile(tile);
       }
     });
   });

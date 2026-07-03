@@ -1,6 +1,6 @@
 import { initProvidersMap } from './providers-map.js';
 import { initQuiz } from './quiz.js';
-import { initResultsGallery } from './gallery.js';
+import { initResultsGallery } from './gallery.js?v=20260703b';
 import { initSectionMotifs } from './section-motifs.js';
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -112,12 +112,6 @@ function tagRevealElements() {
             container.querySelectorAll('.about-timeline-entry').forEach((entry, i) => {
                 addReveal(entry, Math.min(i % 3, 2));
             });
-            return;
-        }
-
-        if (container.closest('.gallery-page-section')) {
-            // Intro + gallery grid stay visible once JS renders; animate only the CTA block.
-            addReveal(container.querySelector(':scope > .mt-10'), 0);
             return;
         }
 

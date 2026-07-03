@@ -5250,18 +5250,10 @@ html.results-gallery-lightbox-open {
 }
 
 .results-gallery__compare--lightbox {
-  aspect-ratio: auto;
-  height: min(58vh, 34rem);
+  aspect-ratio: 8 / 5;
+  width: 100%;
+  height: auto;
   max-height: min(58vh, 34rem);
-}
-
-@media (max-width: 47.9375rem) {
-  .results-gallery-lightbox__stage .results-gallery__compare--lightbox {
-    aspect-ratio: 8 / 5;
-    width: 100%;
-    height: auto;
-    max-height: none;
-  }
 }
 
 .results-gallery__compare--lightbox .results-gallery__half-label {
