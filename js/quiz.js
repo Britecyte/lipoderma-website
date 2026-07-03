@@ -26,7 +26,7 @@ const STEPS = [
 
 const COMPLETE = {
     title: "Great. Here are your next steps.",
-    subtitle: "Taking you to trained providers near you.",
+    subtitle: "Connecting you with providers near you.",
     eyebrow: "ALL SET",
     selectionsSaved: "Selections saved",
     viewProviders: "View providers now",

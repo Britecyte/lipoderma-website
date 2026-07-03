@@ -129,52 +129,21 @@ function currentLightboxItem() {
 function renderLightboxMedia() {
   const current = currentLightboxItem();
   if (!current) return;
-  
-  const side = galleryState.viewSide;
-  
-  document.getElementById('results-gallery-lightbox-compare').innerHTML = `
-    <div class="results-gallery-lightbox__desktop-view">
-      ${compareMarkup(current.ex, 'lightbox')}
-    </div>
-    <div class="results-gallery-lightbox__mobile-view">
-      <div class="results-gallery-lightbox__mobile-photo">
-        ${photoMarkup(current.ex, side, 'results-gallery__photo results-gallery-lightbox__mobile-image')}
-      </div>
-    </div>
-  `;
-}
 
-function isMobileView() {
-  return window.innerWidth < 768;
+  document.getElementById('results-gallery-lightbox-compare').innerHTML =
+    compareMarkup(current.ex, 'lightbox');
 }
 
 function goNext() {
   const flat = flatList(galleryState.categories, galleryState.filter);
-  if (isMobileView()) {
-    if (galleryState.viewSide === 'before') {
-      openLightbox(galleryState.flatIndex, 'after');
-    } else if (galleryState.flatIndex < flat.length - 1) {
-      openLightbox(galleryState.flatIndex + 1, 'before');
-    }
-  } else {
-    if (galleryState.flatIndex < flat.length - 1) {
-      openLightbox(galleryState.flatIndex + 1, galleryState.viewSide);
-    }
+  if (galleryState.flatIndex < flat.length - 1) {
+    openLightbox(galleryState.flatIndex + 1, galleryState.viewSide);
   }
 }
 
 function goPrev() {
-  const flat = flatList(galleryState.categories, galleryState.filter);
-  if (isMobileView()) {
-    if (galleryState.viewSide === 'after') {
-      openLightbox(galleryState.flatIndex, 'before');
-    } else if (galleryState.flatIndex > 0) {
-      openLightbox(galleryState.flatIndex - 1, 'after');
-    }
-  } else {
-    if (galleryState.flatIndex > 0) {
-      openLightbox(galleryState.flatIndex - 1, galleryState.viewSide);
-    }
+  if (galleryState.flatIndex > 0) {
+    openLightbox(galleryState.flatIndex - 1, galleryState.viewSide);
   }
 }
 
@@ -191,14 +160,9 @@ function updateLightboxCopy() {
   
   const prevBtn = document.getElementById('results-gallery-lightbox-prev');
   const nextBtn = document.getElementById('results-gallery-lightbox-next');
-  
-  if (isMobileView()) {
-    prevBtn.disabled = galleryState.flatIndex === 0 && galleryState.viewSide === 'before';
-    nextBtn.disabled = galleryState.flatIndex === flat.length - 1 && galleryState.viewSide === 'after';
-  } else {
-    prevBtn.disabled = galleryState.flatIndex === 0;
-    nextBtn.disabled = galleryState.flatIndex === flat.length - 1;
-  }
+
+  prevBtn.disabled = galleryState.flatIndex === 0;
+  nextBtn.disabled = galleryState.flatIndex === flat.length - 1;
 }
 
 function ensureLightbox() {
@@ -421,10 +385,14 @@ export async function initResultsGallery() {
 
   let categories;
   try {
-    const res = await fetch(new URL('../data/gallery.json', import.meta.url));
+    const res = await fetch(new URL('data/gallery.json', siteBaseUrl()));
+    if (!res.ok) throw new Error(`gallery.json ${res.status}`);
     const data = await res.json();
     categories = data.categories.map((cat, i) => ({ ...cat, _index: i }));
   } catch {
+    roots.forEach((root) => {
+      root.innerHTML = '<p class="microtype text-ink-soft/70">Unable to load results. Please refresh the page.</p>';
+    });
     return;
   }
 

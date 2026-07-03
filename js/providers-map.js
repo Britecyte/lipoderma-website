@@ -9,7 +9,7 @@ const COPY = {
   practiceSite:  "Practice site",
   callNow:       "Call now",
   emptyTitle:    "No providers found.",
-  emptyBody:     "Try searching by state, city, specialty, or clearing the filter to see the full physician network.",
+  emptyBody:     "Try searching by state, city, specialty, or clearing the filter to see the full provider network.",
   locationSuggestionsEyebrow: "Choose a location to sort by nearest provider",
   useLocation:   "Use my location",
   locating:      "Locating...",
