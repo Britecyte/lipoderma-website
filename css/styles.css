@@ -3455,14 +3455,14 @@ footer .section-ambient-motif {
     background-position: 58% 28%;
     background-repeat: no-repeat;
     background-size: cover;
-    transform: scaleX(-1);
     position: absolute;
     inset: 0
 }
 
 @media (min-width:1024px) {
     .hero-a-desktop-photo .campaign-photo:before {
-        background-position: 66% 22%
+        background-position: 66% 22%;
+        transform: scaleX(-1);
     }
 }
 
