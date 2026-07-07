@@ -1,3 +1,10 @@
 node_modules/
 .DS_Store
 *.log
+__pycache__/
+*.pyc
+
+# Local dev / build tooling — not part of deployed site
+scripts/
+data/providers-address-failures.json
+images/gallery/_source/clinical-casebook/

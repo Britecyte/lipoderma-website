@@ -76,6 +76,9 @@ document.addEventListener('DOMContentLoaded', () => {
         if (section) {
             section.scrollIntoView({ behavior: 'smooth' });
             window.dispatchEvent(new Event('lipoderma:providers-target'));
+            window.setTimeout(() => {
+                window.dispatchEvent(new Event('lipoderma:providers-target'));
+            }, 900);
             return;
         }
 

@@ -147,6 +147,9 @@ function renderProviderItem(provider, activeId) {
   const websiteLabel = websiteHasLipodermaPage(provider.website)
     ? COPY.lipodermaPage
     : COPY.practiceSite;
+  const locationLine = provider.address
+    ? escapeHtml(provider.address)
+    : `${escapeHtml(provider.city)}, ${escapeHtml(provider.state)}`;
 
   return `
     <div
@@ -160,7 +163,7 @@ function renderProviderItem(provider, activeId) {
         <h3 class="font-display text-lg leading-snug">${escapeHtml(provider.doctor)}</h3>
         <p class="text-sm text-ink-soft">${escapeHtml(provider.practice)}</p>
         <p class="mt-1 text-sm text-ink-soft">
-          ${escapeHtml(provider.city)}, ${escapeHtml(provider.state)} ·
+          ${locationLine} ·
           <a href="tel:${escapeHtml(provider.phone)}" class="provider-phone font-medium text-bronze-deep hover:underline">${escapeHtml(provider.phone)}</a>
         </p>
       </div>
@@ -406,6 +409,18 @@ export async function initProvidersMap() {
     }, 250);
   }
 
+  function refreshMapSize() {
+    if (!mapInstance) return;
+    mapInstance.invalidateSize({ animate: false });
+  }
+
+  function scheduleMapRefresh() {
+    refreshMapSize();
+    window.setTimeout(refreshMapSize, 200);
+    window.setTimeout(refreshMapSize, 700);
+    window.setTimeout(refreshMapSize, 1200);
+  }
+
   async function initMap() {
     if (mapInstance) return;
     try {
@@ -424,10 +439,11 @@ export async function initProvidersMap() {
       }).addTo(map);
       const markerGroup = L.featureGroup();
       allProviders.forEach(p => {
+        const locationLabel = p.address || `${p.city}, ${p.state}`;
         const marker = L.marker([p.lat, p.lng], { icon: createPinIcon(L, false) })
           .addTo(map)
           .bindPopup(
-            `<strong style="font-size:14px">${escapeHtml(p.doctor)}</strong><br/>${escapeHtml(p.practice)}<br/>${escapeHtml(p.city)}, ${escapeHtml(p.state)}<br/><a href="tel:${escapeHtml(p.phone)}">${escapeHtml(p.phone)}</a>`
+            `<strong style="font-size:14px">${escapeHtml(p.doctor)}</strong><br/>${escapeHtml(p.practice)}<br/>${escapeHtml(locationLabel)}<br/><a href="tel:${escapeHtml(p.phone)}">${escapeHtml(p.phone)}</a>`
           );
         marker.on("click", () => {
           setActive(p.id);
@@ -451,10 +467,13 @@ export async function initProvidersMap() {
   }
 
   function activateMapLoad() {
-    if (state.shouldLoadMap) return;
+    if (state.shouldLoadMap) {
+      scheduleMapRefresh();
+      return;
+    }
     state.shouldLoadMap = true;
     updateMapOverlay();
-    initMap();
+    initMap().then(scheduleMapRefresh);
   }
 
   const observer = new IntersectionObserver(
@@ -462,8 +481,31 @@ export async function initProvidersMap() {
     { threshold: 0.05, rootMargin: "240px 0px 320px 0px" }
   );
   observer.observe(mapPanel);
-  window.addEventListener("lipoderma:providers-target", activateMapLoad);
-  activateMapLoad();
+
+  const resultsSection = document.getElementById("results");
+  if (resultsSection) {
+    const prefetchObserver = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) activateMapLoad(); },
+      { threshold: 0.08, rootMargin: "0px 0px 240px 0px" }
+    );
+    prefetchObserver.observe(resultsSection);
+  }
+
+  window.addEventListener("lipoderma:providers-target", () => {
+    activateMapLoad();
+    scheduleMapRefresh();
+  });
+
+  const directoryGrid = section.querySelector(".providers-directory-grid");
+  if (directoryGrid?.classList.contains("reveal")) {
+    const revealObserver = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) scheduleMapRefresh();
+      },
+      { threshold: 0.15 }
+    );
+    revealObserver.observe(directoryGrid);
+  }
 
   searchInput.addEventListener("input", () => {
     state.query = searchInput.value;

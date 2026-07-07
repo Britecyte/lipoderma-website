@@ -7,18 +7,18 @@
       "quizInterest": "Changes from GLP-1 weight loss",
       "examples": [
         {
+          "slug": "midface-platform",
+          "title": "Volume back where time took it.",
+          "story": "Full-face midface restoration with softer lines and natural contour.",
+          "before": "images/gallery/case-18-midface-platform-before.jpg",
+          "after": "images/gallery/case-18-midface-platform-after.jpg"
+        },
+        {
           "slug": "midface-fearmonti",
           "title": "Volume back where weight loss took it.",
           "story": "Front-facing midface restoration with natural contour.",
           "before": "images/gallery/case-03-midface-fearmonti-before.jpg",
           "after": "images/gallery/case-03-midface-fearmonti-after.jpg"
-        },
-        {
-          "slug": "midface-cheek-beccio",
-          "title": "Soft structure restored.",
-          "story": "Cheek profile hollowing reversed without an overfilled look.",
-          "before": "images/gallery/case-04-cheek-beccio-before.jpg",
-          "after": "images/gallery/case-04-cheek-beccio-after.jpg"
         },
         {
           "slug": "midface-front-beccio",
@@ -30,15 +30,15 @@
       ]
     },
     {
-      "id": "temples",
-      "label": "Temples",
-      "desc": "Temple hollowing that changes the frame around the eyes.",
+      "id": "under-eyes",
+      "label": "Under-eyes",
+      "desc": "Under-eye hollowing that can make the face look tired or drawn.",
       "quizInterest": "Facial volume",
       "examples": [
         {
-          "slug": "temples-woodby",
+          "slug": "under-eyes-woodby",
           "title": "A softer frame, nothing frozen.",
-          "story": "Temple volume restored for a balanced upper face.",
+          "story": "Under-eye volume restored for a balanced, rested look.",
           "before": "images/gallery/case-02-temples-woodby-before.jpg",
           "after": "images/gallery/case-02-temples-woodby-after.jpg"
         }
@@ -60,9 +60,25 @@
         {
           "slug": "hands-beccio-ring",
           "title": "The cushion she had a decade ago.",
-          "story": "Hands look softer without looking treated.",
+          "story": "Hands look softer without losing their character.",
           "before": "images/gallery/case-07-hands-beccio-ring-before.jpg",
           "after": "images/gallery/case-07-hands-beccio-ring-after.jpg"
+        }
+      ]
+    },
+    {
+      "id": "hips",
+      "label": "Hips",
+      "desc": "Hip and buttock contour changes from fat loss, aging, or texture concerns.",
+      "quizInterest": "Body contour",
+      "examples": [
+        {
+          "slug": "hips-contour",
+          "title": "Smoother where it shows.",
+          "story": "Hip contour restored with natural-looking volume at three months.",
+          "before": "images/gallery/case-17-hips-before.jpg",
+          "after": "images/gallery/case-17-hips-after.jpg",
+          "objectPosition": "52% 54%"
         }
       ]
     },
@@ -74,10 +90,10 @@
       "examples": [
         {
           "slug": "jawline-beccio",
-          "title": "Restored, not reshaped.",
-          "story": "Jawline support without changing the face you know.",
-          "before": "images/gallery/case-01-jawline-beccio-before.jpg",
-          "after": "images/gallery/case-01-jawline-beccio-after.jpg"
+          "title": "Soft texture restored.",
+          "story": "Cheek profile hollowing reversed without an overfilled look.",
+          "before": "images/gallery/case-04-cheek-beccio-before.jpg",
+          "after": "images/gallery/case-04-cheek-beccio-after.jpg"
         },
         {
           "slug": "jawline-fearmonti-male",
@@ -85,6 +101,13 @@
           "story": "Lower-face volume replaced with restraint.",
           "before": "images/gallery/case-05-jawline-fearmonti-male-before.jpg",
           "after": "images/gallery/case-05-jawline-fearmonti-male-after.jpg"
+        },
+        {
+          "slug": "jawline-beccio-profile",
+          "title": "Restored, not reshaped.",
+          "story": "Jawline support without changing the face you know.",
+          "before": "images/gallery/case-01-jawline-beccio-before.jpg",
+          "after": "images/gallery/case-01-jawline-beccio-after.jpg"
         }
       ]
     }

@@ -73,12 +73,23 @@ function galleryImageUrl(relativePath) {
 function photoMarkup(ex, side, className) {
   const label = side === 'before' ? 'Before' : 'After';
   const src = galleryImageUrl(ex[side]);
+  const styles = [];
+  if (ex.objectPosition) styles.push(`object-position:${ex.objectPosition}`);
+  const styleAttr = styles.length ? ` style="${styles.join(';')}"` : '';
 
   if (src) {
-    return `<img class="${className}" src="${src}" alt="${label}—${ex.slug}" loading="lazy" decoding="async" draggable="false" />`;
+    return `<img class="${className}" src="${src}" alt="${label}—${ex.slug}" loading="lazy" decoding="async" draggable="false"${styleAttr} />`;
   }
 
   return `<span class="results-gallery__placeholder-copy">[ cleared ${side}—${ex.slug} ]</span>`;
+}
+
+function compareHalfClass(ex) {
+  return ex.photoScale ? ' results-gallery__half--scaled' : '';
+}
+
+function compareHalfStyle(ex) {
+  return ex.photoScale ? ` style="--photo-scale:${ex.photoScale}"` : '';
 }
 
 function compareMarkup(ex, variant = 'tile') {
@@ -87,7 +98,7 @@ function compareMarkup(ex, variant = 'tile') {
   function half(side) {
     const label = side === 'before' ? 'Before' : 'After';
     return `
-      <div class="results-gallery__half" data-side="${side}">
+      <div class="results-gallery__half${compareHalfClass(ex)}" data-side="${side}"${compareHalfStyle(ex)}>
         ${photoMarkup(ex, side, 'results-gallery__photo')}
         <span class="results-gallery__half-label">${label}</span>
       </div>`;
@@ -358,7 +369,7 @@ function renderGallery(root, categories, filter) {
   ];
 
   const desc = filter === 'all'
-    ? 'Browse every cleared result across all injection sites.'
+    ? 'Browse every cleared result across all restoration areas.'
     : categories.find((c) => c.id === filter)?.desc || '';
 
   root.innerHTML = `
