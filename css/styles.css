@@ -3023,10 +3023,11 @@ summary,
     content: "";
     opacity: .58;
     z-index: 0;
-    background-image: url(../images/marketing/mature-woman-lifestyle.webp);
-    background-position: 60% 22%;
+    background-image: url(../images/marketing/glp1-profiles.webp);
+    background-position: 26% 50%;
     background-repeat: no-repeat;
     background-size: cover;
+    transform: scaleX(-1);
     position: absolute;
     inset: 0
 }
@@ -3051,7 +3052,7 @@ summary,
     }
 
     #glp1 .glp1-copy-panel:before {
-        background-position: 60% 18%
+        background-position: 26% 48%
     }
 }
 
