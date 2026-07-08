@@ -78,7 +78,8 @@
           "story": "Hip contour restored with natural-looking volume at three months.",
           "before": "images/gallery/case-17-hips-before.jpg",
           "after": "images/gallery/case-17-hips-after.jpg",
-          "objectPosition": "52% 54%"
+          "objectPosition": "50% 34%",
+          "photoScale": 1.28
         }
       ]
     },
