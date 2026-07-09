@@ -15,7 +15,8 @@
       "lat": 29.564796,
       "lng": -98.538516,
       "verified": true,
-      "address": "11503 Northwest Military Highway, San Antonio, TX 78230"
+      "address": "11503 Northwest Military Highway, San Antonio, TX 78230",
+      "featuredRank": 1
     },
     {
       "id": "micallef-plastic-surgery-christopher-micallef-shavano-pa",
@@ -130,20 +131,20 @@
       "address": "40700 California Oaks Rd, Ste 206, Murrieta, CA 92562"
     },
     {
-      "id": "revive-medspa-team-california-ca",
-      "doctor": "Provider team",
-      "practice": "Revive MedSpa",
-      "city": "California",
+      "id": "susan-brenner-encinitas-ca",
+      "doctor": "Susan Brenner",
+      "practice": "Susan Brenner",
+      "city": "Encinitas",
       "state": "CA",
-      "phone": "(619) 293-7233",
-      "website": "https://www.revive.md",
+      "phone": "(619) 983-0846",
+      "website": "https://britecyte.com",
       "specialties": [
         "Lipoderma"
       ],
-      "lat": 32.773114,
-      "lng": -117.157877,
+      "lat": 33.0369,
+      "lng": -117.292,
       "verified": true,
-      "address": "1425 Frazee Road, San Diego, CA 92108"
+      "address": "109 N El Camino Real #9, Encinitas, CA 92024"
     },
     {
       "id": "the-jewel-medspa-susan-kaweski-la-mesa-ca",
@@ -175,7 +176,8 @@
       "lat": 33.660491,
       "lng": -117.881178,
       "verified": true,
-      "address": "20331 Irvine Ave Suite E6-101, Newport Beach, CA 92660"
+      "address": "20331 Irvine Ave Suite E6-101, Newport Beach, CA 92660",
+      "featuredRank": 5
     },
     {
       "id": "aesthetic-skin-laser-institute-roxanna-barad-pittsburgh-",
@@ -223,7 +225,8 @@
       "lat": 25.95266,
       "lng": -80.141899,
       "verified": true,
-      "address": "2999 NE 191st St., PH6, Aventura, FL 33180"
+      "address": "2999 NE 191st St., PH6, Aventura, FL 33180",
+      "featuredRank": 3
     },
     {
       "id": "rady-rahban-md-rady-rahban-beverly-hills-ca",
@@ -360,7 +363,7 @@
     {
       "id": "m-shamis-inc-marina-shamis-staten-island-ny",
       "doctor": "Marina Shamis",
-      "practice": "M Shamis Inc",
+      "practice": "Medispa Solutions",
       "city": "Staten Island",
       "state": "NY",
       "phone": "(917) 450-5427",
@@ -371,7 +374,8 @@
       "lat": 40.602598,
       "lng": -74.119047,
       "verified": true,
-      "address": "39 Bolivar St, Staten Island, NY 10314"
+      "address": "39 Bolivar St, Staten Island, NY 10314",
+      "featuredRank": 4
     },
     {
       "id": "gilpin-facial-plastics-david-gilpin-nashville-tn",
@@ -403,7 +407,8 @@
       "lat": 39.918484,
       "lng": -86.157996,
       "verified": true,
-      "address": "9002 N. Meridian St. Ste. 205, Indianapolis, IN 46260"
+      "address": "9002 N. Meridian St. Ste. 205, Indianapolis, IN 46260",
+      "featuredRank": 2
     },
     {
       "id": "chernoff-plastic-surgery-and-laser-center-greg-chernoff--2",
@@ -419,7 +424,8 @@
       "lat": 38.473868,
       "lng": -122.725503,
       "verified": true,
-      "address": "3540 Mendocino Ave., Ste. 300, Santa Rosa, CA 95403"
+      "address": "3540 Mendocino Ave., Ste. 300, Santa Rosa, CA 95403",
+      "featuredRank": 2
     },
     {
       "id": "midwest-facial-plastic-surgery-young-paik-evansville-in",
@@ -515,7 +521,8 @@
       "lat": 26.664323,
       "lng": -80.055656,
       "verified": true,
-      "address": "5505 S Dixie Hwy, No. 1, West Palm Beach, FL 33405"
+      "address": "5505 S Dixie Hwy, No. 1, West Palm Beach, FL 33405",
+      "featuredRank": 6
     },
     {
       "id": "agape-dermatology-paul-mallari-johnston-ri",

@@ -3,9 +3,16 @@
     {
       "id": "midface",
       "label": "Midface",
-      "desc": "Cheek and under-eye volume loss—common after weight reduction.",
+      "desc": "Cheek and under-eye volume loss\u2014common after weight reduction.",
       "quizInterest": "Changes from GLP-1 weight loss",
       "examples": [
+        {
+          "slug": "midface-cheek-beccio",
+          "title": "Soft texture restored.",
+          "story": "Cheek profile hollowing reversed without an overfilled look.",
+          "before": "images/gallery/case-04-cheek-beccio-before.jpg",
+          "after": "images/gallery/case-04-cheek-beccio-after.jpg"
+        },
         {
           "slug": "midface-platform",
           "title": "Volume back where time took it.",
@@ -90,25 +97,18 @@
       "quizInterest": "Facial volume",
       "examples": [
         {
-          "slug": "jawline-beccio",
-          "title": "Soft texture restored.",
-          "story": "Cheek profile hollowing reversed without an overfilled look.",
-          "before": "images/gallery/case-04-cheek-beccio-before.jpg",
-          "after": "images/gallery/case-04-cheek-beccio-after.jpg"
-        },
-        {
-          "slug": "jawline-fearmonti-male",
-          "title": "Familiar from every angle.",
-          "story": "Lower-face volume replaced with restraint.",
-          "before": "images/gallery/case-05-jawline-fearmonti-male-before.jpg",
-          "after": "images/gallery/case-05-jawline-fearmonti-male-after.jpg"
-        },
-        {
           "slug": "jawline-beccio-profile",
-          "title": "Restored, not reshaped.",
+          "title": "Familiar from every angle.",
           "story": "Jawline support without changing the face you know.",
           "before": "images/gallery/case-01-jawline-beccio-before.jpg",
           "after": "images/gallery/case-01-jawline-beccio-after.jpg"
+        },
+        {
+          "slug": "jawline-fearmonti-male",
+          "title": "Restored, not reshaped.",
+          "story": "Lower-face volume replaced with restraint.",
+          "before": "images/gallery/case-05-jawline-fearmonti-male-before.jpg",
+          "after": "images/gallery/case-05-jawline-fearmonti-male-after.jpg"
         }
       ]
     }

@@ -105,15 +105,27 @@ function getSortOrigin(state) {
   return null;
 }
 
+function featuredRank(provider) {
+  const rank = Number(provider?.featuredRank);
+  return Number.isFinite(rank) && rank > 0 ? rank : Number.POSITIVE_INFINITY;
+}
+
 function getVisibleProviders(allProviders, query, origin) {
   const normalized = query.trim().toLowerCase();
   const providers = origin
     ? allProviders
     : allProviders.filter(p => matchesQuery(p, normalized));
-  if (!origin) return providers;
-  return [...providers].sort(
-    (a, b) => distanceInMiles(origin, a) - distanceInMiles(origin, b)
-  );
+  if (origin) {
+    return [...providers].sort(
+      (a, b) => distanceInMiles(origin, a) - distanceInMiles(origin, b)
+    );
+  }
+  // Default directory order: Lisa's featured providers first, then the rest.
+  return [...providers].sort((a, b) => {
+    const rankDiff = featuredRank(a) - featuredRank(b);
+    if (rankDiff !== 0) return rankDiff;
+    return String(a.doctor || "").localeCompare(String(b.doctor || ""));
+  });
 }
 
 function buildStatusText(state) {

@@ -37,7 +37,11 @@ class Handler(http.server.SimpleHTTPRequestHandler):
 
 if __name__ == "__main__":
     ip = local_ip()
-    with socketserver.TCPServer(("0.0.0.0", PORT), Handler) as httpd:
+    class ThreadingServer(socketserver.ThreadingMixIn, socketserver.TCPServer):
+        daemon_threads = True
+        allow_reuse_address = True
+
+    with ThreadingServer(("0.0.0.0", PORT), Handler) as httpd:
         print(f"Serving New V3 at http://127.0.0.1:{PORT}/")
         print(f"On your phone (same Wi‑Fi): http://{ip}:{PORT}/")
         print("Press Ctrl+C to stop.")

@@ -1,6 +1,6 @@
 import { initProvidersMap } from './providers-map.js';
 import { initQuiz } from './quiz.js';
-import { initResultsGallery } from './gallery.js?v=20260703b';
+import { initResultsGallery } from './gallery.js?v=20260709o';
 import { initSectionMotifs } from './section-motifs.js';
 
 document.addEventListener('DOMContentLoaded', () => {
