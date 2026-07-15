@@ -10,32 +10,32 @@
           "slug": "midface-cheek-beccio",
           "title": "Soft texture restored.",
           "story": "Cheek profile hollowing reversed without an overfilled look.",
-          "before": "images/gallery/case-04-cheek-beccio-before.png",
-          "after": "images/gallery/case-04-cheek-beccio-after.png",
+          "before": "images/gallery/case-04-cheek-beccio-before.jpg",
+          "after": "images/gallery/case-04-cheek-beccio-after.jpg",
           "courtesy": "Michelle Beccio, FNP-BC"
         },
         {
           "slug": "midface-platform",
           "title": "Volume back where time took it.",
           "story": "Full-face midface restoration with softer lines and natural contour.",
-          "before": "images/gallery/case-18-midface-platform-before.png",
-          "after": "images/gallery/case-18-midface-platform-after.png",
+          "before": "images/gallery/case-18-midface-platform-before.jpg",
+          "after": "images/gallery/case-18-midface-platform-after.jpg",
           "courtesy": "Greg Chernoff, MD, FRCS(C)"
         },
         {
           "slug": "midface-fearmonti",
           "title": "Volume back where weight loss took it.",
           "story": "Front-facing midface restoration with natural contour.",
-          "before": "images/gallery/case-03-midface-fearmonti-before.png",
-          "after": "images/gallery/case-03-midface-fearmonti-after.png",
+          "before": "images/gallery/case-03-midface-fearmonti-before.jpg",
+          "after": "images/gallery/case-03-midface-fearmonti-after.jpg",
           "courtesy": "Dr. Regina Fearmonti"
         },
         {
           "slug": "midface-front-beccio",
           "title": "Tired look, refreshed.",
           "story": "Expression matches how the patient feels again.",
-          "before": "images/gallery/case-11-midface-beccio-front-before.png",
-          "after": "images/gallery/case-11-midface-beccio-front-after.png",
+          "before": "images/gallery/case-11-midface-beccio-front-before.jpg",
+          "after": "images/gallery/case-11-midface-beccio-front-after.jpg",
           "courtesy": "Michelle Beccio, FNP-BC"
         }
       ]
@@ -50,8 +50,8 @@
           "slug": "under-eyes-woodby",
           "title": "A softer frame, nothing frozen.",
           "story": "Under-eye volume restored for a balanced, rested look.",
-          "before": "images/gallery/case-02-temples-woodby-before.png",
-          "after": "images/gallery/case-02-temples-woodby-after.png",
+          "before": "images/gallery/case-02-temples-woodby-before.jpg",
+          "after": "images/gallery/case-02-temples-woodby-after.jpg",
           "courtesy": "Carrie Woodby, NP"
         }
       ]
@@ -66,16 +66,16 @@
           "slug": "hands-woodby",
           "title": "Cushion restored, structure softened.",
           "story": "Veins and tendons less prominent in motion.",
-          "before": "images/gallery/case-06-hands-woodby-before.png",
-          "after": "images/gallery/case-06-hands-woodby-after.png",
+          "before": "images/gallery/case-06-hands-woodby-before.jpg",
+          "after": "images/gallery/case-06-hands-woodby-after.jpg",
           "courtesy": "Carrie Woodby, NP"
         },
         {
           "slug": "hands-beccio-ring",
           "title": "The cushion she had a decade ago.",
           "story": "Hands look softer without losing their character.",
-          "before": "images/gallery/case-07-hands-beccio-ring-before.png",
-          "after": "images/gallery/case-07-hands-beccio-ring-after.png",
+          "before": "images/gallery/case-07-hands-beccio-ring-before.jpg",
+          "after": "images/gallery/case-07-hands-beccio-ring-after.jpg",
           "courtesy": "Michelle Beccio, FNP-BC"
         }
       ]
@@ -90,8 +90,8 @@
           "slug": "hips-contour",
           "title": "Smoother where it shows.",
           "story": "Hip contour restored with natural-looking volume at three months.",
-          "before": "images/gallery/case-17-hips-before.png",
-          "after": "images/gallery/case-17-hips-after.png",
+          "before": "images/gallery/case-17-hips-before.jpg",
+          "after": "images/gallery/case-17-hips-after.jpg",
           "courtesy": "Dr. Rian A. Maercks, MD",
           "objectPosition": "50% 34%",
           "photoScale": 1.28
@@ -108,16 +108,16 @@
           "slug": "jawline-beccio-profile",
           "title": "Familiar from every angle.",
           "story": "Jawline support without changing the face you know.",
-          "before": "images/gallery/case-01-jawline-beccio-before.png",
-          "after": "images/gallery/case-01-jawline-beccio-after.png",
+          "before": "images/gallery/case-01-jawline-beccio-before.jpg",
+          "after": "images/gallery/case-01-jawline-beccio-after.jpg",
           "courtesy": "Michelle Beccio, FNP-BC"
         },
         {
           "slug": "jawline-fearmonti-male",
           "title": "Restored, not reshaped.",
           "story": "Lower-face volume replaced with restraint.",
-          "before": "images/gallery/case-05-jawline-fearmonti-male-before.png",
-          "after": "images/gallery/case-05-jawline-fearmonti-male-after.png",
+          "before": "images/gallery/case-05-jawline-fearmonti-male-before.jpg",
+          "after": "images/gallery/case-05-jawline-fearmonti-male-after.jpg",
           "courtesy": "Dr. Regina Fearmonti"
         }
       ]

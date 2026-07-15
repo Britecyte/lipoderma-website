@@ -123,6 +123,7 @@ function tileHtml(cat, ex, exIndex) {
       <div class="results-gallery__cap">
         <p class="microtype text-flame">${cat.label} · example ${exIndex + 1}</p>
         <p class="results-gallery__cap-title">${ex.title}</p>
+        ${ex.courtesy ? `<p class="results-gallery__courtesy-line">Photos courtesy of ${ex.courtesy}</p>` : ''}
       </div>
     </article>`;
 }
@@ -167,6 +168,9 @@ function updateLightboxCopy() {
   document.getElementById('results-gallery-lightbox-meta').textContent =
     `${ex.title} · ${galleryState.flatIndex + 1} of ${flat.length}`;
   document.getElementById('results-gallery-lightbox-story').textContent = ex.story;
+  const courtesy = document.getElementById('results-gallery-lightbox-courtesy');
+  courtesy.textContent = ex.courtesy ? `Photos courtesy of ${ex.courtesy}` : '';
+  courtesy.hidden = !ex.courtesy;
   
   const prevBtn = document.getElementById('results-gallery-lightbox-prev');
   const nextBtn = document.getElementById('results-gallery-lightbox-next');
@@ -201,6 +205,7 @@ function ensureLightbox() {
       <div class="results-gallery-lightbox__stage" id="results-gallery-lightbox-compare"></div>
       <div class="results-gallery-lightbox__body">
         <p id="results-gallery-lightbox-story"></p>
+        <p class="results-gallery-lightbox__courtesy" id="results-gallery-lightbox-courtesy" hidden></p>
         <button type="button" data-scroll-providers
           class="results-gallery-lightbox__cta group bg-ink px-8 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-white transition-colors hover:bg-bronze">
           See our providers now<span
@@ -394,7 +399,7 @@ export async function initResultsGallery() {
 
   let categories;
   try {
-    const res = await fetch(new URL('data/gallery.json', siteBaseUrl()));
+    const res = await fetch(new URL('data/gallery.json?v=20260715c', siteBaseUrl()));
     if (!res.ok) throw new Error(`gallery.json ${res.status}`);
     const data = await res.json();
     categories = data.categories.map((cat, i) => ({ ...cat, _index: i }));

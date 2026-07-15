@@ -1,6 +1,6 @@
 import { initProvidersMap } from './providers-map.js';
 import { initQuiz } from './quiz.js';
-import { initResultsGallery } from './gallery.js?v=20260709o';
+import { initResultsGallery } from './gallery.js?v=20260715f';
 import { initSectionMotifs } from './section-motifs.js';
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -119,8 +119,8 @@ function tagRevealElements() {
         }
 
         if (container.closest('#providers')) {
-            // Keep copy and search visible; reveal only after the directory has rendered.
-            addReveal(container.querySelector('.providers-directory-grid'), 0);
+            // Keep the map static; reveal only the rendered provider list.
+            addReveal(container.querySelector('#provider-list'), 0);
             return;
         }
 

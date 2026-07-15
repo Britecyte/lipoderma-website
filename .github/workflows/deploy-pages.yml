@@ -23,8 +23,23 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: actions/configure-pages@v5
+      - name: Stage public site files
+        run: |
+          rsync -a --delete \
+            --exclude '.git/' \
+            --exclude '.github/' \
+            --exclude '_site/' \
+            --exclude '_archive/' \
+            --exclude 'images/gallery/_archive/' \
+            --exclude 'images/gallery/_source/' \
+            --exclude 'scripts/' \
+            --exclude 'node_modules/' \
+            --exclude 'data/providers-address-failures.json' \
+            --exclude 'serve.py' \
+            --exclude 'README.md' \
+            ./ _site/
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: .
+          path: _site
       - id: deployment
         uses: actions/deploy-pages@v4

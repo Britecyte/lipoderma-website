@@ -2709,8 +2709,20 @@ input[type="reset"]:not(:disabled),
 a[href],
 label[for],
 summary,
-[role="button"]:not([aria-disabled="true"]) {
+[role="button"]:not([aria-disabled="true"]),
+[role="tab"]:not([aria-disabled="true"]) {
     cursor: pointer
+}
+
+button:disabled,
+input[type="button"]:disabled,
+input[type="submit"]:disabled,
+input[type="reset"]:disabled,
+input:disabled,
+select:disabled,
+textarea:disabled,
+[aria-disabled="true"] {
+    cursor: not-allowed
 }
 
 .font-display {
@@ -5513,6 +5525,15 @@ footer .section-ambient-motif {
     min-height: 9.5rem;
 }
 
+.results-preview-card__courtesy {
+    margin-top: 0.25rem;
+    color: rgb(255 255 255 / 0.56);
+    font-size: 0.625rem;
+    font-weight: 500;
+    letter-spacing: 0.015em;
+    line-height: 1.3;
+}
+
 .results-preview-card__cap .font-display {
     flex: 1 1 auto;
     min-height: 3.5rem;
@@ -5655,16 +5676,15 @@ footer .section-ambient-motif {
 
 .results-gallery__half-label {
     position: absolute;
-    left: 0;
     right: 0;
     bottom: 0;
+    left: 0;
     padding: 0.45rem 0.55rem 0.35rem;
+    color: #fff;
     font-size: 0.5625rem;
     font-weight: 700;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: #fff;
-    background: linear-gradient(to top, rgb(14 38 82 / 0.78), rgb(14 38 82 / 0));
     pointer-events: none;
 }
 
@@ -5698,6 +5718,16 @@ footer .section-ambient-motif {
     font-weight: 600;
     letter-spacing: -0.01em;
     line-height: 1.35;
+}
+
+.results-gallery__courtesy-line {
+    margin-top: 0.35rem;
+    color: #4a5470;
+    font-size: 0.5625rem;
+    font-weight: 500;
+    letter-spacing: 0.015em;
+    line-height: 1.35;
+    opacity: 0.72;
 }
 
 .results-gallery-lightbox {
@@ -5836,6 +5866,16 @@ html.results-gallery-lightbox-open {
     color: var(--color-ink-soft);
     font-size: 0.9rem;
     line-height: 1.6;
+}
+
+.results-gallery-lightbox__courtesy {
+    margin-top: 0.3rem;
+    color: var(--color-ink-soft) !important;
+    font-size: 0.6875rem !important;
+    font-weight: 500;
+    letter-spacing: 0.015em;
+    line-height: 1.35 !important;
+    opacity: 0.72;
 }
 
 .results-gallery-lightbox__cta {
