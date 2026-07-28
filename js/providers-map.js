@@ -22,7 +22,7 @@ const PROVIDER_ANALYTICS_ENDPOINT =
   window.LIPODERMA_PROVIDER_ANALYTICS_ENDPOINT ||
   (["localhost", "127.0.0.1"].includes(window.location.hostname)
     ? "http://127.0.0.1:3000/provider-directory/events"
-    : "https://launchpad.lipoderma.com/provider-directory/events");
+    : "https://lipoderma-launchpad.onrender.com/provider-directory/events");
 
 function providerLabel(provider) {
   return [provider.doctor, provider.practice].filter(Boolean).join(" · ");
