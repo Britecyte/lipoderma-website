@@ -16,10 +16,11 @@ export const MOTIF_CONFIG = {
         '.gallery-page-section',
         '.science-page-section',
         '#about .section-ambient-motif',
+        '#contact .section-ambient-motif',
         'footer .section-ambient-motif',
     ],
     /** Sections that receive the shared corner SVG pair (same markup in both) */
-    ambientShellHosts: ['#about', 'footer'],
+    ambientShellHosts: ['#about', '#contact', 'footer'],
     /** Cluster count range per section (before spacing rejects extras) */
     count: { min: 4, max: 6, reducedMotionMax: 3 },
     minDistance: 0.17,
@@ -34,6 +35,7 @@ export const MOTIF_CONFIG = {
     /** Per-section cluster count overrides (key matches sectionKey) */
     countOverrides: {
         about: { min: 1, max: 2, reducedMotionMax: 1 },
+        contact: { min: 1, max: 2, reducedMotionMax: 1 },
         footer: { min: 2, max: 4, reducedMotionMax: 2 },
     },
 };
@@ -67,6 +69,7 @@ function getSharedAmbientMarkup(hostKey) {
         </svg>`;
 
     if (hostKey === 'about') return left;
+    if (hostKey === 'contact') return right;
     if (hostKey === 'footer') return right;
     return left + right;
 }

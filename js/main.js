@@ -55,6 +55,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    initContactForm();
+
     // ── "Book" / "Scroll to providers" buttons ────────────────────────────────
     document.addEventListener('click', (e) => {
         const btn = e.target.closest('[data-scroll-providers]');
@@ -88,6 +90,61 @@ document.addEventListener('DOMContentLoaded', () => {
 
 });
 
+const CONTACT_ENDPOINT = 'https://formsubmit.co/ajax/642cc79bd5eb946f4aec9631167a6878';
+
+function initContactForm() {
+    const form = document.querySelector('[data-contact-form]');
+    const success = document.querySelector('[data-form-success]');
+    const error = document.querySelector('[data-form-error]');
+    if (!form) return;
+
+    const submitBtn = form.querySelector('button[type="submit"]');
+    const defaultBtnLabel = submitBtn?.textContent?.trim() || 'Send message';
+
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        if (success) success.hidden = true;
+        if (error) error.hidden = true;
+        if (submitBtn) submitBtn.textContent = 'Sending…';
+
+        const subjectField = form.querySelector('[name="subject"]');
+        const subjectHidden = form.querySelector('[name="_subject"]');
+        if (subjectField instanceof HTMLSelectElement && subjectHidden instanceof HTMLInputElement) {
+            const label = subjectField.options[subjectField.selectedIndex]?.text || 'General inquiry';
+            subjectHidden.value = `Lipoderma website—${label}`;
+        }
+
+        const payload = Object.fromEntries(new FormData(form));
+        const fields = form.querySelectorAll('input, textarea, select, button');
+        fields.forEach((el) => { el.disabled = true; });
+
+        try {
+            const response = await fetch(CONTACT_ENDPOINT, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    Accept: 'application/json',
+                },
+                body: JSON.stringify(payload),
+            });
+
+            const result = await response.json().catch(() => null);
+            if (!response.ok || result?.success === 'false' || result?.success === false) {
+                throw new Error(result?.message || 'Submit failed');
+            }
+
+            form.reset();
+            if (success) success.hidden = false;
+        } catch {
+            if (error) error.hidden = false;
+        } finally {
+            fields.forEach((el) => { el.disabled = false; });
+            if (submitBtn) submitBtn.textContent = defaultBtnLabel;
+        }
+    });
+}
+
 function tagRevealElements() {
     const addReveal = (el, delayIndex = 0) => {
         if (!el || el.classList.contains('reveal')) return;
@@ -115,6 +172,13 @@ function tagRevealElements() {
             container.querySelectorAll('.about-timeline-entry').forEach((entry, i) => {
                 addReveal(entry, Math.min(i % 3, 2));
             });
+            return;
+        }
+
+        if (container.closest('#contact')) {
+            addReveal(container.querySelector('.contact-block > header'), 0);
+            addReveal(container.querySelector('.contact-form'), 1);
+            addReveal(container.querySelector('.contact-address'), 2);
             return;
         }
 
