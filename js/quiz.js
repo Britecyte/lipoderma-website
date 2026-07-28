@@ -1,3 +1,9 @@
+const QUIZ_ANALYTICS_ENDPOINT =
+    window.LIPODERMA_PROVIDER_ANALYTICS_ENDPOINT ||
+    (["localhost", "127.0.0.1"].includes(window.location.hostname)
+        ? "http://127.0.0.1:3000/provider-directory/events"
+        : "https://lipoderma-launchpad.onrender.com/provider-directory/events");
+
 const STEPS = [
     {
         id: "restore",
@@ -36,6 +42,44 @@ const COMPLETE = {
 
 const MAX_SLOTS = Math.max(...STEPS.map(s => s.options.length));
 
+function slugify(value) {
+    return value.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 80);
+}
+
+function trackQuizEvent(eventName, targetId, targetLabel) {
+    if (!QUIZ_ANALYTICS_ENDPOINT) return;
+
+    const body = JSON.stringify({
+        events: [{
+            event_name: eventName,
+            provider_id: targetId,
+            provider_label: targetLabel,
+            page_path: window.location.pathname || "/",
+        }],
+    });
+
+    fetch(QUIZ_ANALYTICS_ENDPOINT, {
+        method: "POST",
+        mode: "cors",
+        credentials: "omit",
+        keepalive: true,
+        headers: { "Content-Type": "text/plain" },
+        body,
+    }).catch(() => {});
+}
+
+function trackQuizAnswer(step, answer) {
+    trackQuizEvent(
+        "quiz_answer_select",
+        `quiz:${step.id}:${slugify(answer)}`,
+        `${step.title}: ${answer}`
+    );
+}
+
+function trackQuizComplete() {
+    trackQuizEvent("quiz_complete", "quiz:complete", "Quiz complete");
+}
+
 function firstUnanswered(answers) {
     const i = STEPS.findIndex(s => !answers[s.id]);
     return i === -1 ? STEPS.length : i;
@@ -50,6 +94,7 @@ function renderMinimal(container, answers, stepIndex, onDone) {
     const step   = STEPS[Math.min(stepIndex, STEPS.length - 1)];
 
     if (isDone) {
+        trackQuizComplete();
         container.innerHTML = `
             <div class="quiz-flow-minimal quiz-embed-stage quiz-complete-panel flex h-full min-h-0 flex-col">
                 <a href="#providers"
@@ -97,7 +142,9 @@ function renderMinimal(container, answers, stepIndex, onDone) {
 
     container.querySelectorAll('[data-quiz-opt]').forEach(btn => {
         btn.addEventListener('click', () => {
-            answers[step.id] = btn.getAttribute('data-quiz-opt');
+            const answer = btn.getAttribute('data-quiz-opt');
+            answers[step.id] = answer;
+            trackQuizAnswer(step, answer);
             renderMinimal(container, answers, stepIndex + 1, onDone);
         });
     });
@@ -120,6 +167,7 @@ function renderFull(container, answers, stepIndex, onDone) {
                 ${opt}
             </button>`).join('');
     } else {
+        trackQuizComplete();
         bodyHtml = `
             <div class="flex items-center justify-center border hairline bg-cream p-5 text-center">
                 <div>
@@ -165,7 +213,9 @@ function renderFull(container, answers, stepIndex, onDone) {
     if (!isDone) {
         container.querySelectorAll('[data-quiz-opt]').forEach(btn => {
             btn.addEventListener('click', () => {
-                answers[step.id] = btn.getAttribute('data-quiz-opt');
+                const answer = btn.getAttribute('data-quiz-opt');
+                answers[step.id] = answer;
+                trackQuizAnswer(step, answer);
                 renderFull(container, answers, stepIndex + 1, onDone);
             });
         });

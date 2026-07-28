@@ -1,5 +1,5 @@
 import { initProvidersMap } from './providers-map.js?v=20260728b';
-import { initQuiz } from './quiz.js';
+import { initQuiz } from './quiz.js?v=20260728a';
 import { initResultsGallery } from './gallery.js?v=20260715f';
 import { initSectionMotifs } from './section-motifs.js';
 
