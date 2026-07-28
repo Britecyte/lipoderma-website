@@ -18,6 +18,38 @@ const COPY = {
   mapLazy:       "Map loads when you scroll here",
 };
 
+const PROVIDER_ANALYTICS_ENDPOINT =
+  window.LIPODERMA_PROVIDER_ANALYTICS_ENDPOINT ||
+  (["localhost", "127.0.0.1"].includes(window.location.hostname)
+    ? "http://127.0.0.1:3000/provider-directory/events"
+    : "https://launchpad.lipoderma.com/provider-directory/events");
+
+function providerLabel(provider) {
+  return [provider.doctor, provider.practice].filter(Boolean).join(" · ");
+}
+
+function trackProviderClick(eventName, provider) {
+  if (!provider?.id || !PROVIDER_ANALYTICS_ENDPOINT) return;
+
+  const body = JSON.stringify({
+    events: [{
+      event_name: eventName,
+      provider_id: provider.id,
+      provider_label: providerLabel(provider),
+      page_path: window.location.pathname || "/",
+    }],
+  });
+
+  fetch(PROVIDER_ANALYTICS_ENDPOINT, {
+    method: "POST",
+    mode: "cors",
+    credentials: "omit",
+    keepalive: true,
+    headers: { "Content-Type": "text/plain" },
+    body,
+  }).catch(() => {});
+}
+
 export function websiteHasLipodermaPage(url) {
   try {
     const path = new URL(url).pathname.toLowerCase();
@@ -458,6 +490,7 @@ export async function initProvidersMap() {
             `<strong style="font-size:14px">${escapeHtml(p.doctor)}</strong><br/>${escapeHtml(p.practice)}<br/>${escapeHtml(locationLabel)}<br/><a href="tel:${escapeHtml(p.phone)}">${escapeHtml(p.phone)}</a>`
           );
         marker.on("click", () => {
+          trackProviderClick("provider_map_marker_select", p);
           setActive(p.id);
           document.getElementById(`provider-${p.id}`)?.scrollIntoView({ behavior: "smooth", block: "nearest" });
         });
@@ -535,11 +568,25 @@ export async function initProvidersMap() {
   });
 
   listEl.addEventListener("click", event => {
-    if (event.target.closest(".provider-phone, .provider-website")) return;
+    const trackedLink = event.target.closest(".provider-phone, .provider-website");
+    if (trackedLink) {
+      const item = trackedLink.closest(".provider-list-item");
+      const provider = allProviders.find(p => p.id === item?.dataset.providerId);
+      if (provider) {
+        trackProviderClick(
+          trackedLink.classList.contains("provider-phone") ? "provider_phone_click" : "provider_website_click",
+          provider
+        );
+      }
+      return;
+    }
     const item = event.target.closest(".provider-list-item");
     if (!item) return;
     const provider = allProviders.find(p => p.id === item.dataset.providerId);
-    if (provider) focusProvider(provider);
+    if (provider) {
+      trackProviderClick("provider_card_select", provider);
+      focusProvider(provider);
+    }
   });
 
   listEl.addEventListener("keydown", event => {
@@ -548,7 +595,10 @@ export async function initProvidersMap() {
     if (!item || event.target !== item) return;
     event.preventDefault();
     const provider = allProviders.find(p => p.id === item.dataset.providerId);
-    if (provider) focusProvider(provider);
+    if (provider) {
+      trackProviderClick("provider_card_select", provider);
+      focusProvider(provider);
+    }
   });
 
   renderList();
