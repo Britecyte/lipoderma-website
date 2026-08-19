@@ -3107,46 +3107,6 @@ textarea:disabled,
     }
 }
 
-#why .why-faq-panel {
-    isolation: isolate;
-    position: relative;
-    overflow: hidden
-}
-
-#why .why-faq-panel:before {
-    content: "";
-    pointer-events: none;
-    opacity: .225;
-    z-index: 0;
-    background-image: url(../images/vial-product.png);
-    background-position: 50% 54%;
-    background-repeat: no-repeat;
-    background-size: min(78%, 21rem) auto;
-    position: absolute;
-    inset: 0
-}
-
-#why .why-faq-panel:after {
-    content: "";
-    pointer-events: none;
-    z-index: 1;
-    background: radial-gradient(ellipse 72% 63% at 50% 54%, #f9fbff59 0%, #f9fbffb8 42%, #f9fbffe6 68%, #f9fbffef 100%);
-    position: absolute;
-    inset: 0
-}
-
-#why .why-faq-panel>* {
-    z-index: 2;
-    position: relative
-}
-
-@media (min-width:768px) {
-    #why .why-faq-panel:before {
-        background-size: min(69%, 24rem) auto;
-        opacity: .275
-    }
-}
-
 .v2-surface :is(.gallery-page-section, .science-page-section) .bg-white {
     background-color: #ffffff82 !important
 }
