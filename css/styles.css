@@ -6179,16 +6179,10 @@ html.results-gallery-lightbox-open {
 
 #contact .products-bg {
     position: absolute;
-    top: clamp(1.5rem, 4vw, 3rem);
-    bottom: clamp(1.5rem, 4vw, 3rem);
-    left: 50%;
-    width: min(calc(100% - 3rem), 72rem);
-    transform: translateX(-50%);
+    inset: 0;
     z-index: 0;
     pointer-events: none;
     overflow: hidden;
-    border: 1px solid color-mix(in oklab, var(--color-ink) 10%, transparent);
-    box-shadow: 0 18px 50px -28px rgba(14, 38, 82, 0.35);
 }
 
 #contact .products-bg-frame {
