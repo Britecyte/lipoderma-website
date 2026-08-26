@@ -525,6 +525,23 @@
       "featuredRank": 6
     },
     {
+      "id": "plastic-surgery-institute-of-new-york-adam-schaffner-new-york-ny",
+      "doctor": "Adam Schaffner",
+      "practice": "Plastic Surgery Institute of New York",
+      "city": "New York",
+      "state": "NY",
+      "phone": "(212) 481-6696",
+      "website": "https://www.plasticsurgeoninnyc.com/?utm_source=gmb&utm_medium=organic&utm_campaign=gmb",
+      "specialties": [
+        "Lipoderma"
+      ],
+      "lat": 40.757169,
+      "lng": -73.97867,
+      "verified": true,
+      "address": "590 5th Ave Suite 1101, New York, NY 10036",
+      "featuredRank": 7
+    },
+    {
       "id": "agape-dermatology-paul-mallari-johnston-ri",
       "doctor": "Paul Mallari",
       "practice": "Agape Dermatology",
