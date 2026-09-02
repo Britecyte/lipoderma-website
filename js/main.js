@@ -90,7 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 });
 
-const CONTACT_ENDPOINT = 'https://formsubmit.co/ajax/70dc252fb1bf6f4d658a25453abeed0e';
+const CONTACT_ENDPOINT = 'https://formsubmit.co/ajax/needthefat@britecyte.com';
 
 function initContactForm() {
     const form = document.querySelector('[data-contact-form]');
