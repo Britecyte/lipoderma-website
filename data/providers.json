@@ -99,13 +99,77 @@
       "address": "11199 Sorrento Valley Road, STE 202, San Diego, CA 92121"
     },
     {
-      "id": "south-bay-plastic-surgeons-michael-newman-beverly-hills-",
+      "id": "south-bay-plastic-surgeons-michael-newman-torrance-ca",
       "doctor": "Michael Newman",
       "practice": "South Bay Plastic Surgeons",
-      "city": "Beverly Hills",
+      "city": "Torrance",
       "state": "CA",
       "phone": "(310) 784-0644",
-      "website": "https://southbayplasticsurgeons.com",
+      "website": "https://www.plasticsurgerysource.com/about/plastic-surgeons/michael-newman/",
+      "specialties": [
+        "Lipoderma"
+      ],
+      "lat": 33.814397,
+      "lng": -118.348959,
+      "verified": true,
+      "address": "3640 Lomita Boulevard #306, Torrance, CA 90505"
+    },
+    {
+      "id": "south-bay-plastic-surgeons-lisa-jewell-torrance-ca",
+      "doctor": "Lisa Jewell",
+      "practice": "South Bay Plastic Surgeons",
+      "city": "Torrance",
+      "state": "CA",
+      "phone": "(310) 784-0644",
+      "website": "https://www.plasticsurgerysource.com/about/plastic-surgeons/board-certified-plastic-surgeon-dr-lisa-jewell/",
+      "specialties": [
+        "Lipoderma"
+      ],
+      "lat": 33.814397,
+      "lng": -118.348959,
+      "verified": true,
+      "address": "3640 Lomita Boulevard #306, Torrance, CA 90505"
+    },
+    {
+      "id": "south-bay-plastic-surgeons-whitney-burrell-torrance-ca",
+      "doctor": "Whitney Burrell",
+      "practice": "South Bay Plastic Surgeons",
+      "city": "Torrance",
+      "state": "CA",
+      "phone": "(310) 784-0644",
+      "website": "https://www.plasticsurgerysource.com/about/plastic-surgeons/plastic-surgeon-dr-whitney-burrell/",
+      "specialties": [
+        "Lipoderma"
+      ],
+      "lat": 33.814397,
+      "lng": -118.348959,
+      "verified": true,
+      "address": "3640 Lomita Boulevard #306, Torrance, CA 90505"
+    },
+    {
+      "id": "south-bay-plastic-surgeons-ni-jui-james-liang-torrance-ca",
+      "doctor": "Ni-Jui James Liang",
+      "practice": "South Bay Plastic Surgeons",
+      "city": "Torrance",
+      "state": "CA",
+      "phone": "(310) 784-0644",
+      "website": "https://www.plasticsurgerysource.com/about/plastic-surgeons/board-certified-plastic-surgeon-dr-ni-jui-james-liang/",
+      "specialties": [
+        "Lipoderma"
+      ],
+      "lat": 33.814397,
+      "lng": -118.348959,
+      "verified": true,
+      "address": "3640 Lomita Boulevard #306, Torrance, CA 90505"
+    },
+    {
+      "id": "south-bay-plastic-surgeons-juan-rendon-torrance-ca",
+      "doctor": "Juan Rendon",
+      "practice": "South Bay Plastic Surgeons",
+      "city": "Torrance",
+      "state": "CA",
+      "phone": "(310) 784-0644",
+      "website": "https://www.plasticsurgerysource.com/about/plastic-surgeons/board-certified-plastic-surgeon-dr-juan-rendon/",
       "specialties": [
         "Lipoderma"
       ],
