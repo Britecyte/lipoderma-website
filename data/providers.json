@@ -1068,6 +1068,446 @@
       "lng": -77.052865,
       "verified": true,
       "address": "2440 M Street NW, Suite 810, Washington, DC 20037"
+    },
+    {
+      "id": "renewed-youth-co-stephanie-gilbert-harrisburg-pa",
+      "doctor": "Stephanie Gilbert",
+      "practice": "Renewed Youth Co",
+      "city": "Harrisburg",
+      "state": "PA",
+      "phone": "(717) 452-9657",
+      "website": "https://www.solasalonstudios.com/salon-professional/stephanie-gilbert",
+      "specialties": [
+        "Lipoderma"
+      ],
+      "lat": 40.303666,
+      "lng": -76.845039,
+      "verified": true,
+      "address": "2553 Brindle Drive, Harrisburg, PA 17110"
+    },
+    {
+      "id": "arijai-aesthetics-and-wellness-christopher-balgobin-san-antonio-tx",
+      "doctor": "Christopher Balgobin",
+      "practice": "Arijai Aesthetics and Wellness",
+      "city": "San Antonio",
+      "state": "TX",
+      "website": "https://arijaitexas.com/",
+      "specialties": [
+        "Lipoderma"
+      ],
+      "verified": true,
+      "phone": "(210) 600-9297",
+      "address": "250 East Basse Road, Suite 205, San Antonio, TX 78209",
+      "lat": 29.493209,
+      "lng": -98.478932
+    },
+    {
+      "id": "arijai-aesthetics-and-wellness-christopher-balgobin-burnsville-mn",
+      "doctor": "Christopher Balgobin",
+      "practice": "Arijai Aesthetics and Wellness",
+      "city": "Burnsville",
+      "state": "MN",
+      "website": "https://arijai.com/dr-christopher-balgobin",
+      "specialties": [
+        "Lipoderma"
+      ],
+      "verified": true,
+      "phone": "(952) 243-2100",
+      "address": "200 East Travelers Trail, Suite 210, Burnsville, MN 55337",
+      "lat": 44.775854,
+      "lng": -93.27427
+    },
+    {
+      "id": "bloom-facial-plastic-aesthetic-surgery-jason-bloom-bryn-mawr-pa",
+      "doctor": "Jason Bloom",
+      "practice": "Bloom Facial Plastic & Aesthetic Surgery",
+      "city": "Bryn Mawr",
+      "state": "PA",
+      "website": "https://www.bloomfacialplastics.com/",
+      "specialties": [
+        "Lipoderma"
+      ],
+      "verified": true,
+      "phone": "(610) 854-8676",
+      "address": "Two Town Place, Suite 110, Bryn Mawr, PA 19010",
+      "lat": 40.0242,
+      "lng": -75.3183
+    },
+    {
+      "id": "natura-holistic-beauty-collective-jennifer-cantu-dallas-tx",
+      "doctor": "Jennifer Cantu",
+      "practice": "Natura Holistic Beauty Collective",
+      "city": "Dallas",
+      "state": "TX",
+      "website": "https://www.naturahealthcollective.com/",
+      "specialties": [
+        "Lipoderma"
+      ],
+      "verified": true,
+      "phone": "(972) 670-7650",
+      "address": "3626 N Hall Street, Suite 615, Dallas, TX 75219"
+    },
+    {
+      "id": "the-beauty-fix-angelica-chavez-scottsdale-az",
+      "doctor": "Angelica Chavez",
+      "practice": "The Beauty Fix",
+      "city": "Scottsdale",
+      "state": "AZ",
+      "website": "https://thebeautyfixmedspa.com/lipoderma/",
+      "specialties": [
+        "Lipoderma"
+      ],
+      "verified": true,
+      "phone": "(480) 340-8364",
+      "address": "7629 E Pinnacle Peak Road, Suite 104, Scottsdale, AZ 85255",
+      "lat": 33.698778,
+      "lng": -111.916185
+    },
+    {
+      "id": "lavinia-chong-md-lavinia-chong-newport-beach-ca",
+      "doctor": "Lavinia Chong",
+      "practice": "Lavinia Chong MD",
+      "city": "Newport Beach",
+      "state": "CA",
+      "website": "https://www.chongmd.com/",
+      "specialties": [
+        "Lipoderma"
+      ],
+      "verified": true,
+      "address": "1401 Avocado Avenue, Suite 803, Newport Beach, CA 92660",
+      "lat": 33.612516,
+      "lng": -117.870686
+    },
+    {
+      "id": "aesthetic-center-for-plastic-surgery-medspa-christy-craig-houston-tx",
+      "doctor": "Christy Craig",
+      "practice": "Aesthetic Center for Plastic Surgery & MedSpa",
+      "city": "Houston",
+      "state": "TX",
+      "website": "https://www.mybeautifulbody.com/provider/christy-craig-np/",
+      "specialties": [
+        "Lipoderma"
+      ],
+      "verified": true,
+      "phone": "(713) 799-9999",
+      "address": "4400 Post Oak Parkway, Suite 300, Houston, TX 77027",
+      "lat": 29.747733,
+      "lng": -95.451702
+    },
+    {
+      "id": "inspire-wellness-habib-dalhoumi-san-diego-ca",
+      "doctor": "Habib Dalhoumi",
+      "practice": "Inspire Wellness",
+      "city": "San Diego",
+      "state": "CA",
+      "website": "https://inspiresd.com/",
+      "specialties": [
+        "Lipoderma"
+      ],
+      "verified": true,
+      "address": "10330 Friars Road, Suite 119, San Diego, CA 92120",
+      "lat": 32.791226,
+      "lng": -117.100882
+    },
+    {
+      "id": "doft-plastic-surgery-melissa-doft-new-york-ny",
+      "doctor": "Melissa Doft",
+      "practice": "Doft Plastic Surgery",
+      "city": "New York",
+      "state": "NY",
+      "website": "https://www.doftplasticsurgery.com/",
+      "specialties": [
+        "Lipoderma"
+      ],
+      "verified": true,
+      "phone": "(212) 600-4109",
+      "address": "755 Park Avenue, New York, NY 10021",
+      "lat": 40.770795,
+      "lng": -73.963511
+    },
+    {
+      "id": "florida-plastic-surgery-group-morgen-fletcher-jacksonville-fl",
+      "doctor": "Morgen Fletcher",
+      "practice": "Florida Plastic Surgery Group",
+      "city": "Jacksonville",
+      "state": "FL",
+      "website": "https://www.plasticsurgeryjacksonville.com/locations/southside/",
+      "specialties": [
+        "Lipoderma"
+      ],
+      "verified": true,
+      "phone": "(904) 922-4009",
+      "address": "14546 Old St. Augustine Rd. Medical Bldg 1, Suite 407, Jacksonville, FL 32258",
+      "lat": 30.140904,
+      "lng": -81.531704
+    },
+    {
+      "id": "the-indigo-clinic-zoe-flor-new-york-ny",
+      "doctor": "Zoe Flor",
+      "practice": "The Indigo Clinic",
+      "city": "New York",
+      "state": "NY",
+      "website": "https://www.theindigoclinic.com/",
+      "specialties": [
+        "Lipoderma"
+      ],
+      "verified": true,
+      "phone": "(929) 249-3993",
+      "address": "347 5th Avenue, Suite 1206, New York, NY 10016",
+      "lat": 40.748116,
+      "lng": -73.984709
+    },
+    {
+      "id": "plastic-aesthetic-surgery-specialists-martin-fox-louisville-ky",
+      "doctor": "Martin Fox",
+      "practice": "Plastic & Aesthetic Surgery Specialists",
+      "city": "Louisville",
+      "state": "KY",
+      "website": "https://www.kyplasticsurgery.com/",
+      "specialties": [
+        "Lipoderma"
+      ],
+      "verified": true,
+      "address": "4001 Kresge Way, Suite 320, Louisville, KY 40207",
+      "lat": 38.239191,
+      "lng": -85.64056
+    },
+    {
+      "id": "franklin-plastic-surgery-joseph-franklin-cary-nc",
+      "doctor": "Joseph Franklin",
+      "practice": "Franklin Plastic Surgery",
+      "city": "Cary",
+      "state": "NC",
+      "website": "https://www.josephfranklinmd.com/",
+      "specialties": [
+        "Lipoderma"
+      ],
+      "verified": true,
+      "phone": "(919) 651-8006",
+      "address": "1000 Darrington Drive, Suite 205, Cary, NC 27513",
+      "lat": 35.799989,
+      "lng": -78.81402
+    },
+    {
+      "id": "la-vraie-beaute-melanie-fulton-ruiz-san-antonio-tx",
+      "doctor": "Melanie Fulton-Ruiz",
+      "practice": "La Vraie Beaute",
+      "city": "San Antonio",
+      "state": "TX",
+      "website": "https://www.lvbsa.com/",
+      "specialties": [
+        "Lipoderma"
+      ],
+      "verified": true,
+      "phone": "(210) 688-4106",
+      "address": "7979 Broadway, Suite 101, San Antonio, TX 78209",
+      "lat": 29.506793,
+      "lng": -98.466301
+    },
+    {
+      "id": "chi-aesthetics-medspa-and-wellness-center-chikodiri-gibson-staten-island-ny",
+      "doctor": "Chikodiri Gibson",
+      "practice": "Chi Aesthetics MedSpa and Wellness Center",
+      "city": "Staten Island",
+      "state": "NY",
+      "website": "https://www.chiaesthetics.com/",
+      "specialties": [
+        "Lipoderma"
+      ],
+      "verified": true,
+      "address": "720 Forest Ave, Staten Island, NY 10310",
+      "lat": 40.629102,
+      "lng": -74.113145
+    },
+    {
+      "id": "advanced-image-med-spa-jennessa-iannitelli-glendale-az",
+      "doctor": "Jennessa Iannitelli",
+      "practice": "Advanced Image Med Spa",
+      "city": "Glendale",
+      "state": "AZ",
+      "website": "https://www.advancedimagemedspa.com/",
+      "specialties": [
+        "Lipoderma"
+      ],
+      "verified": true,
+      "phone": "(623) 432-8357",
+      "address": "7942 West Bell Road, Suite C-2, Glendale, AZ 85308",
+      "lat": 33.639376,
+      "lng": -112.230075
+    },
+    {
+      "id": "refresh-aesthetics-maria-jennings-murray-ky",
+      "doctor": "Maria Jennings",
+      "practice": "ReFresh Aesthetics",
+      "city": "Murray",
+      "state": "KY",
+      "website": "https://refreshmurray.com/",
+      "specialties": [
+        "Lipoderma"
+      ],
+      "verified": true,
+      "phone": "(270) 661-1198",
+      "address": "1710 Highway 121 N, Suite C, Murray, KY 42071",
+      "lat": 36.588994,
+      "lng": -88.29745
+    },
+    {
+      "id": "khrom-dermatology-aesthetics-tatiana-khrom-brooklyn-ny",
+      "doctor": "Tatiana Khrom",
+      "practice": "Khrom Dermatology & Aesthetics",
+      "city": "Brooklyn",
+      "state": "NY",
+      "website": "https://www.khromdermatology.com/",
+      "specialties": [
+        "Lipoderma"
+      ],
+      "verified": true,
+      "phone": "(718) 615-4000",
+      "address": "2797 Ocean Pkwy, 3rd Floor, Brooklyn, NY 11235",
+      "lat": 40.581442,
+      "lng": -73.966736
+    },
+    {
+      "id": "bella-bar-medspa-jessica-marren-brownsville-tx",
+      "doctor": "Jessica Marren",
+      "practice": "Bella Bar Medspa",
+      "city": "Brownsville",
+      "state": "TX",
+      "website": "https://www.bellabartx.com/",
+      "specialties": [
+        "Lipoderma"
+      ],
+      "verified": true,
+      "address": "523 E St Charles St, Brownsville, TX 78520",
+      "lat": 25.904433,
+      "lng": -97.504283
+    },
+    {
+      "id": "amoramd-arash-moradzadeh-beverly-hills-ca",
+      "doctor": "Arash Moradzadeh",
+      "practice": "AMoraMD",
+      "city": "Beverly Hills",
+      "state": "CA",
+      "website": "https://amoramd.com/locations/beverly-hills/",
+      "specialties": [
+        "Lipoderma"
+      ],
+      "verified": true,
+      "phone": "(310) 659-9900",
+      "address": "433 N Camden Drive, Suite 510, Beverly Hills, CA 90210",
+      "lat": 34.068936,
+      "lng": -118.404491
+    },
+    {
+      "id": "park-avenue-oculoplastic-surgeons-jerry-popham-denver-co",
+      "doctor": "Jerry Popham",
+      "practice": "Park Avenue OculoPlastic Surgeons",
+      "city": "Denver",
+      "state": "CO",
+      "website": "https://www.drpopham.com/",
+      "specialties": [
+        "Lipoderma"
+      ],
+      "verified": true,
+      "phone": "(303) 468-8844",
+      "address": "1800 Emerson St #200, Denver, CO 80218",
+      "lat": 39.745078,
+      "lng": -104.975735
+    },
+    {
+      "id": "raval-facial-aesthetics-jeffrey-raval-denver-co",
+      "doctor": "Jeffrey Raval",
+      "practice": "Raval Facial Aesthetics",
+      "city": "Denver",
+      "state": "CO",
+      "website": "https://www.ravalmd.com/",
+      "specialties": [
+        "Lipoderma"
+      ],
+      "verified": true,
+      "address": "3773 Cherry Creek North Drive, Suite 132, Denver, CO 80209",
+      "lat": 39.708922,
+      "lng": -104.942581
+    },
+    {
+      "id": "prick-d-medspa-krista-riley-st-louis-mo",
+      "doctor": "Krista Riley",
+      "practice": "Prick'd Medspa",
+      "city": "St. Louis",
+      "state": "MO",
+      "website": "https://prickdmedspa.com/",
+      "specialties": [
+        "Lipoderma"
+      ],
+      "verified": true,
+      "phone": "(314) 256-1290",
+      "address": "35 The Boulevard, St. Louis, MO 63117",
+      "lat": 38.635029,
+      "lng": -90.344909
+    },
+    {
+      "id": "sharma-cosmetic-giriraj-sharma-newport-beach-ca",
+      "doctor": "Giriraj Sharma",
+      "practice": "Sharma Cosmetic",
+      "city": "Newport Beach",
+      "state": "CA",
+      "website": "https://www.sharmacosmetic.com/",
+      "specialties": [
+        "Lipoderma"
+      ],
+      "verified": true,
+      "phone": "(949) 688-7334",
+      "address": "360 San Miguel Drive, Suite 409, Newport Beach, CA 92660",
+      "lat": 33.61342,
+      "lng": -117.871689
+    },
+    {
+      "id": "wellness-diagnostics-longevity-medicine-pc-gloria-tumbaga-temecula-ca",
+      "doctor": "Gloria Tumbaga",
+      "practice": "Wellness Diagnostics & Longevity Medicine PC",
+      "city": "Temecula",
+      "state": "CA",
+      "website": "https://wellnessdiagnosticsmedispa.com/",
+      "specialties": [
+        "Lipoderma"
+      ],
+      "verified": true,
+      "phone": "(951) 387-5935",
+      "address": "32605 Temecula Parkway, Suite 200, Temecula, CA 92592",
+      "lat": 33.483543,
+      "lng": -117.08856
+    },
+    {
+      "id": "elan-wellness-dana-veney-roseville-ca",
+      "doctor": "Dana Veney",
+      "practice": "Elan Wellness",
+      "city": "Roseville",
+      "state": "CA",
+      "website": "https://livewellelan.com/",
+      "specialties": [
+        "Lipoderma"
+      ],
+      "verified": true,
+      "phone": "(916) 886-3602",
+      "address": "1850 Douglas Boulevard, Suite 988, Roseville, CA 95661",
+      "lat": 38.743279,
+      "lng": -121.257586
+    },
+    {
+      "id": "vitenas-cosmetic-surgery-paul-vitenas-houston-tx",
+      "doctor": "Paul Vitenas",
+      "practice": "Vitenas Cosmetic Surgery",
+      "city": "Houston",
+      "state": "TX",
+      "website": "https://www.drvitenas.com/",
+      "specialties": [
+        "Lipoderma"
+      ],
+      "verified": true,
+      "phone": "(281) 484-0088",
+      "address": "4208 Richmond Avenue, Suite 200, Houston, TX 77027",
+      "lat": 29.732681,
+      "lng": -95.444627
     }
   ]
 }
