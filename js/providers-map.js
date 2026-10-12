@@ -12,6 +12,8 @@ const COPY = {
   emptyTitle:    "No providers found.",
   emptyBody:     "Try searching by state, city, specialty, or clearing the filter to see the full provider network.",
   locationSuggestionsEyebrow: "Choose a location to sort by nearest provider",
+  providerSuggestionsEyebrow: "Providers",
+  locationHeading: "Locations",
   useLocation:   "Use my location",
   locating:      "Locating...",
   nearestFirst:  "Nearest first",
@@ -112,30 +114,48 @@ function createPinIcon(L, highlight) {
   });
 }
 
-function matchesQuery(provider, normalized) {
+function matchesTokens(fields, normalized) {
   if (!normalized) return true;
-  return [
-    provider.doctor,
-    provider.practice,
-    provider.city,
-    provider.state,
-    provider.zip,
-    ...(provider.specialties || []),
-  ]
-    .filter(Boolean)
-    .join(" ")
-    .toLowerCase()
-    .includes(normalized);
+  const haystack = fields.filter(Boolean).join(" ").toLowerCase();
+  return normalized.split(/\s+/).every(token => haystack.includes(token));
 }
 
-function getSortOrigin(state) {
+function matchesQuery(provider, normalized) {
+  return matchesTokens(
+    [
+      provider.doctor,
+      provider.practice,
+      provider.city,
+      provider.state,
+      provider.zip,
+      ...(provider.specialties || []),
+    ],
+    normalized
+  );
+}
+
+// Provider-name search: doctor or practice only (cities/states are handled by location search).
+function matchesProviderName(provider, normalized) {
+  return Boolean(normalized) && matchesTokens([provider.doctor, provider.practice], normalized);
+}
+
+function queryMatchesProviderName(state, allProviders) {
+  const normalized = state.query.trim().toLowerCase();
+  return normalized.length >= 2 && allProviders.some(p => matchesProviderName(p, normalized));
+}
+
+function getImplicitOrigin(state, allProviders) {
+  const query = state.query.trim();
+  if (query.length < 2 || state.locationSuggestions.length === 0) return null;
+  // A provider/practice name match wins over a guessed location.
+  if (queryMatchesProviderName(state, allProviders)) return null;
+  return state.locationSuggestions[0];
+}
+
+function getSortOrigin(state, allProviders) {
   if (state.selectedOrigin) return state.selectedOrigin;
   if (state.userLocation) return state.userLocation;
-  const query = state.query.trim();
-  if (query.length >= 2 && state.locationSuggestions.length > 0) {
-    return state.locationSuggestions[0];
-  }
-  return null;
+  return getImplicitOrigin(state, allProviders);
 }
 
 function featuredRank(provider) {
@@ -161,12 +181,11 @@ function getVisibleProviders(allProviders, query, origin) {
   });
 }
 
-function buildStatusText(state) {
+function buildStatusText(state, allProviders) {
   const implicitOrigin =
-    !state.selectedOrigin &&
-    !state.userLocation &&
-    state.query.trim().length >= 2 &&
-    state.locationSuggestions[0];
+    !state.selectedOrigin && !state.userLocation
+      ? getImplicitOrigin(state, allProviders)
+      : null;
   const origin = state.selectedOrigin ?? state.userLocation ?? implicitOrigin;
 
   let text = "";
@@ -176,6 +195,8 @@ function buildStatusText(state) {
     text = "Sorted by distance from your location.";
   } else if (implicitOrigin) {
     text = `Showing nearest providers to ${implicitOrigin.label}.`;
+  } else if (state.query.trim().length >= 2 && queryMatchesProviderName(state, allProviders)) {
+    text = `Showing providers matching “${state.query.trim()}”.`;
   } else if (state.suggestionStatus === "loading") {
     text = "Looking for matching locations.";
   } else if (state.suggestionStatus === "empty" && state.query.trim().length >= 2) {
@@ -280,6 +301,7 @@ export async function initProvidersMap() {
     locationSuggestions: [],
     suggestionStatus: "idle",
     locationStatus: "idle",
+    pickedProvider: false,
   };
 
   let mapInstance = null;
@@ -306,25 +328,41 @@ export async function initProvidersMap() {
     messageEl.innerHTML = `${state.shouldLoadMap ? COPY.mapLoading : COPY.mapLazy} <span class="text-flame">●</span>`;
   }
 
+  function getProviderSuggestions() {
+    const normalized = state.query.trim().toLowerCase();
+    if (normalized.length < 2 || state.selectedOrigin || state.pickedProvider) return [];
+    return allProviders
+      .filter(p => matchesProviderName(p, normalized))
+      .sort((x, y) => String(x.doctor || "").localeCompare(String(y.doctor || "")))
+      .slice(0, 5);
+  }
+
   function renderSuggestionsDropdown() {
-    if (!state.locationSuggestions.length) {
+    const providerMatches = getProviderSuggestions();
+    const locations = state.selectedOrigin || state.pickedProvider ? [] : state.locationSuggestions;
+    if (!providerMatches.length && !locations.length) {
       suggestionsEl.hidden = true;
       suggestionsEl.innerHTML = "";
       searchBar?.classList.remove("is-suggesting");
       return;
     }
-    const items = state.locationSuggestions
+    const itemClass =
+      "block w-full border-b hairline px-4 py-3 text-left text-sm font-medium text-ink transition-colors last:border-b-0 hover:bg-cream";
+    const providerItems = providerMatches
+      .map(p => `
+        <button type="button" class="provider-suggestion ${itemClass}" data-provider-pick="${escapeHtml(p.id)}">
+          ${escapeHtml(p.doctor)}
+          <span class="block text-xs font-normal text-ink-soft">${escapeHtml([p.practice, `${p.city}, ${p.state}`].filter(Boolean).join(" · "))}</span>
+        </button>
+      `).join("");
+    const locationItems = locations
       .map(s => `
-        <button
-          type="button"
-          class="location-suggestion block w-full border-b hairline px-4 py-3 text-left text-sm font-medium text-ink transition-colors last:border-b-0 hover:bg-cream"
-          data-suggestion-id="${escapeHtml(s.id)}"
-        >${escapeHtml(s.label)}</button>
+        <button type="button" class="location-suggestion ${itemClass}" data-suggestion-id="${escapeHtml(s.id)}">${escapeHtml(s.label)}</button>
       `).join("");
     suggestionsEl.innerHTML = `
       <div class="border hairline bg-white shadow-lift">
-        <p class="microtype border-b hairline px-4 py-2 !text-[9px]">${COPY.locationSuggestionsEyebrow}</p>
-        ${items}
+        ${providerItems ? `<p class="microtype border-b hairline px-4 py-2 !text-[9px]">${COPY.providerSuggestionsEyebrow}</p>${providerItems}` : ""}
+        ${locationItems ? `<p class="microtype border-b hairline px-4 py-2 !text-[9px]">${providerItems ? COPY.locationHeading : COPY.locationSuggestionsEyebrow}</p>${locationItems}` : ""}
       </div>
     `;
     suggestionsEl.hidden = false;
@@ -339,9 +377,9 @@ export async function initProvidersMap() {
   }
 
   function renderList() {
-    const origin = getSortOrigin(state);
+    const origin = getSortOrigin(state, allProviders);
     const visible = getVisibleProviders(allProviders, state.query, origin);
-    statusEl.textContent = buildStatusText(state);
+    statusEl.textContent = buildStatusText(state, allProviders);
     geolocateBtn.textContent =
       state.locationStatus === "loading" ? COPY.locating :
       state.locationStatus === "ready"   ? COPY.nearestFirst :
@@ -369,7 +407,26 @@ export async function initProvidersMap() {
     markers[provider.id]?.openPopup();
   }
 
+  function chooseProviderSuggestion(provider) {
+    state.pickedProvider = true;
+    state.selectedOrigin = null;
+    state.userLocation = null;
+    state.locationStatus = "idle";
+    state.query = provider.doctor;
+    searchInput.value = provider.doctor;
+    if (geocodeTimer) window.clearTimeout(geocodeTimer);
+    if (geocodeController) geocodeController.abort();
+    state.locationSuggestions = [];
+    state.suggestionStatus = "idle";
+    renderSuggestionsDropdown();
+    renderList();
+    trackProviderClick("provider_card_select", provider);
+    focusProvider(provider);
+    document.getElementById(`provider-${provider.id}`)?.scrollIntoView({ behavior: "smooth", block: "nearest" });
+  }
+
   function chooseLocationSuggestion(suggestion) {
+    state.pickedProvider = false;
     state.query = suggestion.label;
     searchInput.value = suggestion.label;
     state.selectedOrigin = suggestion;
@@ -566,13 +623,21 @@ export async function initProvidersMap() {
 
   searchInput.addEventListener("input", () => {
     state.query = searchInput.value;
+    state.pickedProvider = false;
     scheduleGeocode(state.query.trim());
+    renderSuggestionsDropdown();
     renderList();
   });
 
   geolocateBtn.addEventListener("click", requestLocation);
 
   suggestionsEl.addEventListener("click", event => {
+    const providerButton = event.target.closest(".provider-suggestion");
+    if (providerButton) {
+      const provider = allProviders.find(p => p.id === providerButton.dataset.providerPick);
+      if (provider) chooseProviderSuggestion(provider);
+      return;
+    }
     const button = event.target.closest(".location-suggestion");
     if (!button) return;
     const suggestion = state.locationSuggestions.find(s => s.id === button.dataset.suggestionId);
