@@ -1305,6 +1305,22 @@
       "lng": -98.466301
     },
     {
+      "id": "la-vraie-beaute-melanie-fulton-ruiz-boerne-tx",
+      "doctor": "Melanie Fulton-Ruiz",
+      "practice": "La Vraie Beaute",
+      "city": "Boerne",
+      "state": "TX",
+      "website": "https://www.lvbsa.com/",
+      "specialties": [
+        "Lipoderma"
+      ],
+      "verified": true,
+      "phone": "(210) 687-1110",
+      "address": "609 S. Main, Boerne, TX 78006",
+      "lat": 29.788037,
+      "lng": -98.728965
+    },
+    {
       "id": "chi-aesthetics-medspa-and-wellness-center-chikodiri-gibson-staten-island-ny",
       "doctor": "Chikodiri Gibson",
       "practice": "Chi Aesthetics MedSpa and Wellness Center",
