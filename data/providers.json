@@ -1145,7 +1145,9 @@
       ],
       "verified": true,
       "phone": "(972) 670-7650",
-      "address": "3626 N Hall Street, Suite 615, Dallas, TX 75219"
+      "address": "3626 N Hall Street, Suite 615, Dallas, TX 75219",
+      "lat": 32.808829,
+      "lng": -96.805735
     },
     {
       "id": "the-beauty-fix-angelica-chavez-scottsdale-az",

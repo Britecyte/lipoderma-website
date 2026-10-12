@@ -261,7 +261,9 @@ export async function initProvidersMap() {
     const response = await fetch(new URL("../data/providers.json", import.meta.url));
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
     const data = await response.json();
-    allProviders = (data.providers || []).filter(p => p.verified);
+    allProviders = (data.providers || []).filter(
+      p => p.verified && Number.isFinite(p.lat) && Number.isFinite(p.lng)
+    );
   } catch (error) {
     console.error("providers-map: failed to load providers", error);
     statusEl.textContent = "Unable to load provider directory.";
