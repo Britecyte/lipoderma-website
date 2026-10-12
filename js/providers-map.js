@@ -1,8 +1,9 @@
 /**
  * Provider directory map—vanilla JS port of MapDirectory.tsx
  */
-const LEAFLET_CSS = "https://unpkg.com/leaflet@1.9.4/dist/leaflet.css";
-const LEAFLET_JS  = "https://unpkg.com/leaflet@1.9.4/dist/leaflet.js";
+// Self-hosted Leaflet (no third-party CDN round trip).
+const LEAFLET_CSS = new URL("../vendor/leaflet/leaflet.css", import.meta.url).href;
+const LEAFLET_JS  = new URL("../vendor/leaflet/leaflet.js", import.meta.url).href;
 
 const COPY = {
   lipodermaPage: "Lipoderma page",
@@ -235,6 +236,11 @@ function renderEmptyState() {
 export async function initProvidersMap() {
   const section = document.getElementById("providers");
   if (!section) return;
+
+  // Warm up Leaflet during idle time so the map is ready by the time the user scrolls here.
+  const warm = () => loadLeaflet().catch(() => {});
+  if ("requestIdleCallback" in window) requestIdleCallback(warm, { timeout: 3000 });
+  else setTimeout(warm, 1500);
 
   const searchInput  = section.querySelector("#provider-search");
   const geolocateBtn = section.querySelector("#provider-geolocate");
@@ -477,9 +483,12 @@ export async function initProvidersMap() {
       const map = L.map(mapEl, { scrollWheelZoom: false, attributionControl: true })
         .setView([39.5, -98], 4);
       mapInstance = map;
-      L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+      L.tileLayer("https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png", {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
+        subdomains: "abcd",
         maxZoom: 19,
+        updateWhenIdle: true,
+        keepBuffer: 1,
       }).addTo(map);
       const markerGroup = L.featureGroup();
       allProviders.forEach(p => {
