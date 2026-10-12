@@ -483,9 +483,8 @@ export async function initProvidersMap() {
       const map = L.map(mapEl, { scrollWheelZoom: false, attributionControl: true })
         .setView([39.5, -98], 4);
       mapInstance = map;
-      L.tileLayer("https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png", {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
-        subdomains: "abcd",
+      L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
         maxZoom: 19,
         updateWhenIdle: true,
         keepBuffer: 1,
@@ -510,7 +509,9 @@ export async function initProvidersMap() {
         map.fitBounds(markerGroup.getBounds().pad(0.12));
       }
       const resize = () => map.invalidateSize({ animate: false });
-      map.whenReady(() => { resize(); state.mapReady = true; updateMapOverlay(); });
+      resize();
+      state.mapReady = true;
+      updateMapOverlay();
       window.setTimeout(resize, 200);
       window.setTimeout(resize, 800);
       window.addEventListener("resize", resize);
