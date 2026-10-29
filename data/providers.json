@@ -1561,6 +1561,22 @@
       "address": "4208 Richmond Avenue, Suite 200, Houston, TX 77027",
       "lat": 29.732681,
       "lng": -95.444627
+    },
+    {
+      "id": "radiance-medspa-heather-jane-mchugh-avon-ct",
+      "doctor": "Heather Jane McHugh",
+      "practice": "Radiance Medspa",
+      "city": "Avon",
+      "state": "CT",
+      "website": "https://www.radianceavon.com/",
+      "specialties": [
+        "Lipoderma"
+      ],
+      "verified": true,
+      "phone": "(860) 409-9000",
+      "address": "320 West Main Street, Avon, CT 06001",
+      "lat": 41.814590,
+      "lng": -72.858849
     }
   ]
 }
