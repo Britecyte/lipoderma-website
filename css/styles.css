@@ -6220,8 +6220,7 @@ html.results-gallery-lightbox-open {
     gap: 1rem;
 }
 
-.contact-form-trap,
-.contact-form [data-turnstile] {
+.contact-form-trap {
     position: absolute;
     width: 1px;
     height: 1px;
