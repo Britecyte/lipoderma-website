@@ -17,7 +17,7 @@
     <link rel="apple-touch-icon" href="images/favicons/apple-touch-icon.png" />
     <link rel="preload" as="image" href="images/logos/lipoderma-logo.svg" />
     <link rel="preconnect" href="https://tile.openstreetmap.org" crossorigin />
-    <link rel="stylesheet" href="css/styles.css?v=20260728h">
+    <link rel="stylesheet" href="css/styles.css?v=20261030a">
     <title>Lipoderma®—Restore What's Yours™</title>
     <meta name="description"
         content="Look refreshed, confident, and like yourself again with natural adipose allograft. Available through select providers." />
@@ -692,6 +692,11 @@
                             <input type="hidden" name="_template" value="table" />
                             <input type="hidden" name="_url" value="https://lipoderma.com/" />
                             <input type="hidden" name="_captcha" value="false" />
+                            <div class="contact-form-trap" aria-hidden="true">
+                                <label for="contact-company">Company</label>
+                                <input type="text" id="contact-company" name="company" tabindex="-1" autocomplete="off" />
+                            </div>
+                            <div data-turnstile></div>
                             <div class="contact-form-row">
                                 <label class="microtype contact-form-label" for="contact-name">Name</label>
                                 <input type="text" id="contact-name" name="name" required class="contact-form-input"
@@ -820,7 +825,7 @@
             </div>
         </footer>
     </div>
-    <script type="module" src="js/main.js?v=20261012d"></script>
+    <script type="module" src="js/main.js?v=20261030a"></script>
 </body>
 
 </html>

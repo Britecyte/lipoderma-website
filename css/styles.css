@@ -6213,10 +6213,22 @@ html.results-gallery-lightbox-open {
 }
 
 .contact-form {
+    position: relative;
     margin-top: 1.5rem;
     display: flex;
     flex-direction: column;
     gap: 1rem;
+}
+
+.contact-form-trap,
+.contact-form [data-turnstile] {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
 }
 
 .contact-form-card {

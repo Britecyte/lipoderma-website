@@ -90,7 +90,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 });
 
-const CONTACT_ENDPOINT = 'https://formsubmit.co/ajax/brighterlives@britecyte.com';
+const LAUNCHPAD_CONTACT = 'https://www.launchpad.lipoderma.com/website-contact';
+const FORMSUBMIT_CONTACT = 'https://formsubmit.co/ajax/brighterlives@britecyte.com';
 
 function initContactForm() {
     const form = document.querySelector('[data-contact-form]');
@@ -100,14 +101,86 @@ function initContactForm() {
 
     const submitBtn = form.querySelector('button[type="submit"]');
     const defaultBtnLabel = submitBtn?.textContent?.trim() || 'Send message';
+    let turnstileWidgetId = null;
+    let turnstilePending = null;
 
-    form.addEventListener('submit', async (e) => {
-        e.preventDefault();
+    function setBusy(busy) {
+        const fields = form.querySelectorAll('input, textarea, select, button');
+        fields.forEach((el) => { el.disabled = busy; });
+        if (submitBtn) submitBtn.textContent = busy ? 'Sending…' : defaultBtnLabel;
+    }
 
-        if (success) success.hidden = true;
-        if (error) error.hidden = true;
-        if (submitBtn) submitBtn.textContent = 'Sending…';
+    async function launchpadSiteKey() {
+        const response = await fetch(LAUNCHPAD_CONTACT, { headers: { Accept: 'application/json' } });
+        if (!response.ok) return null;
+        const data = await response.json().catch(() => null);
+        return data?.site_key || null;
+    }
 
+    function loadTurnstile() {
+        if (window.turnstile) return Promise.resolve();
+        return new Promise((resolve, reject) => {
+            const script = document.createElement('script');
+            script.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit';
+            script.async = true;
+            script.onload = () => resolve();
+            script.onerror = () => reject(new Error('turnstile'));
+            document.head.appendChild(script);
+        });
+    }
+
+    async function prepareTurnstile(siteKey) {
+        await loadTurnstile();
+        const holder = form.querySelector('[data-turnstile]');
+        if (!holder || !window.turnstile) throw new Error('turnstile');
+        turnstileWidgetId = window.turnstile.render(holder, {
+            sitekey: siteKey,
+            size: 'invisible',
+            callback: (token) => turnstilePending?.resolve(token),
+            'error-callback': () => turnstilePending?.reject(new Error('turnstile')),
+        });
+    }
+
+    function requestTurnstileToken() {
+        return new Promise((resolve, reject) => {
+            const timer = setTimeout(() => reject(new Error('timeout')), 20000);
+            turnstilePending = {
+                resolve: (token) => {
+                    clearTimeout(timer);
+                    resolve(token);
+                },
+                reject: (err) => {
+                    clearTimeout(timer);
+                    reject(err);
+                },
+            };
+            window.turnstile.execute(turnstileWidgetId);
+        });
+    }
+
+    async function sendThroughLaunchpad() {
+        const token = await requestTurnstileToken();
+        const response = await fetch(LAUNCHPAD_CONTACT, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                Accept: 'application/json',
+            },
+            body: JSON.stringify({
+                name: form.querySelector('[name="name"]')?.value || '',
+                email: form.querySelector('[name="email"]')?.value || '',
+                subject: form.querySelector('[name="subject"]')?.value || '',
+                message: form.querySelector('[name="message"]')?.value || '',
+                company: form.querySelector('[name="company"]')?.value || '',
+                turnstile_token: token,
+            }),
+        });
+        const result = await response.json().catch(() => null);
+        if (!response.ok || result?.success === false) throw new Error('Submit failed');
+        if (window.turnstile && turnstileWidgetId !== null) window.turnstile.reset(turnstileWidgetId);
+    }
+
+    async function sendThroughFormSubmit() {
         const subjectField = form.querySelector('[name="subject"]');
         const subjectHidden = form.querySelector('[name="_subject"]');
         if (subjectField instanceof HTMLSelectElement && subjectHidden instanceof HTMLInputElement) {
@@ -116,22 +189,43 @@ function initContactForm() {
         }
 
         const payload = Object.fromEntries(new FormData(form));
-        const fields = form.querySelectorAll('input, textarea, select, button');
-        fields.forEach((el) => { el.disabled = true; });
+        delete payload.company;
+        const response = await fetch(FORMSUBMIT_CONTACT, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                Accept: 'application/json',
+            },
+            body: JSON.stringify(payload),
+        });
+        const result = await response.json().catch(() => null);
+        if (!response.ok || result?.success === 'false' || result?.success === false) {
+            throw new Error(result?.message || 'Submit failed');
+        }
+    }
+
+    const turnstileReady = launchpadSiteKey()
+        .then((siteKey) => (siteKey ? prepareTurnstile(siteKey) : null))
+        .catch(() => { turnstileWidgetId = null; });
+
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        if (success) success.hidden = true;
+        if (error) error.hidden = true;
+        setBusy(true);
 
         try {
-            const response = await fetch(CONTACT_ENDPOINT, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    Accept: 'application/json',
-                },
-                body: JSON.stringify(payload),
-            });
+            await turnstileReady;
+            if ((form.querySelector('[name="company"]')?.value || '').trim()) {
+                form.reset();
+                if (success) success.hidden = false;
+                return;
+            }
 
-            const result = await response.json().catch(() => null);
-            if (!response.ok || result?.success === 'false' || result?.success === false) {
-                throw new Error(result?.message || 'Submit failed');
+            if (turnstileWidgetId !== null) {
+                await sendThroughLaunchpad();
+            } else {
+                await sendThroughFormSubmit();
             }
 
             form.reset();
@@ -139,8 +233,7 @@ function initContactForm() {
         } catch {
             if (error) error.hidden = false;
         } finally {
-            fields.forEach((el) => { el.disabled = false; });
-            if (submitBtn) submitBtn.textContent = defaultBtnLabel;
+            setBusy(false);
         }
     });
 }
